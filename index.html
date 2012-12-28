@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PCA for the uninitiated</title>
+  <meta charset="utf-8">
+  <meta name="description" content="PCA for the uninitiated">
+  <meta name="author" content="Ben Mabey">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+    <link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+    <!-- END LOGO SLIDE -->
+    
+
+    <!-- TITLE SLIDE -->
+    <!-- Should I move this to a Local Layout File? -->
+    <slide class="title-slide segue nobackground">
+      <hgroup class="auto-fadein">
+        <h1>PCA for the uninitiated</h1>
+        <h2>Intuitive motivation via maximum variance interpretation</h2>
+        <p>Ben Mabey<br/>Programmer</p>
+      </hgroup>
+          </slide>
+
+    <!-- SLIDES -->
+      <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>The versatile PCA...</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Dimensionality Reduction Technique</li>
+<li>Preparing datasets by reducing noise</li>
+<li>Factor Analysis</li>
+<li>Data Exploration &amp; Visualization</li>
+<li>Feature Extraction</li>
+<li>Regression (Orthogonal)</li>
+<li>Unsupervised Learning Algorithm</li>
+<li>K-Means Initializer</li>
+<li>Lossy Data Compression</li>
+<li>Computer Graphics (e.g. Bounded Volumes)</li>
+<li>and more!</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="fill nobackground" style="background-image: url(assets/img/sky.jpg)">
+  <hgroup>
+    <h2 class="white">Full image...</h2>
+  </hgroup>
+  <footer class="source white">www.flickr.com/photos/25797459@N06/5438799763/</footer>
+</slide>
+      <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>A change of basis</h2>
+  </hgroup>
+  <article>
+    <h1>PX = Y</h1>
+
+
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note">
+    <section>
+      <ul>
+<li>A <em>linear</em> transformation!  This is a big assumption.<br></li>
+<li>What does the transformation boil down to?<br>
+
+<ul>
+<li>Rotation and scale.. so how does that help us?</li>
+</ul></li>
+</ul>
+
+    </section>
+  </aside>
+</slide>
+
+      <slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Slide 2</h2>
+  </hgroup>
+  <article>
+    <p>\(\begin{align*}
+&\begin{bmatrix}
+\mathbf{y}\\
+y_*
+\end{bmatrix}
+=\mathcal{N}\left(0,\begin{bmatrix}
+K & K_*\\
+K_*^T & K_{**}
+\end{bmatrix}\right)\\
+\Longrightarrow & y_*|\mathbf{y}\sim\mathcal{N}\left(K_*K^{-1}\mathbf{y},K_{**}-K_*K^{-1}K_*^T\right)\\
+\Longrightarrow & \overline{y_*}=K_*K^{-1}\mathbf{y}
+\end{align*}\)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+
+  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+<!-- Grab CDN jQuery, fall back to local if offline -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery-1.7.min.js"><\/script>')</script>
+<!-- Load Javascripts for Widgets -->
+<!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script> -->
+<script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+</html>
