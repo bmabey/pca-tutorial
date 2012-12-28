@@ -41,12 +41,12 @@
     <!-- SLIDES -->
       <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>The versatile PCA...</h2>
+    <h2>The versatile PCA</h2>
   </hgroup>
   <article>
     <ul>
-<li>Dimensionality Reduction Technique</li>
-<li>Preparing datasets by reducing noise</li>
+<li>Dimensionality Reduction</li>
+<li>Noise Reduction</li>
 <li>Factor Analysis</li>
 <li>Data Exploration &amp; Visualization</li>
 <li>Feature Extraction</li>
@@ -62,40 +62,235 @@
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="fill nobackground" style="background-image: url(assets/img/sky.jpg)">
+      <slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2 class="white">Full image...</h2>
-  </hgroup>
-  <footer class="source white">www.flickr.com/photos/25797459@N06/5438799763/</footer>
-</slide>
-      <slide class="" id="slide-3" style="background:;">
-  <hgroup>
-    <h2>A change of basis</h2>
+    <h2>Majority of PCA tutorials...</h2>
   </hgroup>
   <article>
-    <h1>PX = Y</h1>
-
+    <ol>
+<li>Organize dataset as matrix.</li>
+<li>Subtract off the mean for each measurement.</li>
+<li>Calculate the covariance matrix and perform eigendecomposition.</li>
+<li>Profit!</li>
+</ol>
 
   </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Majority of PCA tutorials...</h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>Organize dataset as matrix.</li>
+<li>Subtract off the mean for each measurement.</li>
+<li>Calculate the <strike>covariance</strike> correlation matrix and perform eigendecomposition.</li>
+<li>Profit!</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Majority of PCA tutorials...</h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>Organize dataset as matrix.</li>
+<li>Subtract off the mean for each measurement.</li>
+<li><strike>Calculate the <strike>covariance</strike> correlation matrix and perform eigendecomposition.</strike></li>
+<li>Perform SVD.</li>
+<li>Profit!</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5">
+<hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><img style="height:600px" src="assets/img/confused_gandalf.jpg"/></p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+      <slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>The intuitive <strike>Magic</strike> Math behind PCA</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li><strong>Maximize the variance.</strong></li>
+<li>Minimize the projection error.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-7">
+<hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><span style="font-size:500%">\(P_{m\times m}X_{m\times n} = Y_{m\times n}\)</span></p>
+
+
+</article>
+<!-- Presenter Notes -->
+<aside class="note">
+  <section>
+    <ul>
+<li>A <em>linear</em> transformation!  This is a big assumption.</li>
+<li><em>Is there another basis, which is a linear combination of the original basis, that best re-expresses our data set?</em></li>
+<li>This transformation will become the <em>principal components</em> of X.</li>
+<li>What does the transformation boil down to?
+
+<ul>
+<li>Rotation and scale.. so how does that help us?</li>
+<li>What should our P be doing?</li>
+<li>What do we want our Y do look like?</li>
+</ul></li>
+</ul>
+
+  </section>
+</aside>
+</slide>
+      <slide class="fill nobackground" style="background-image: url(assets/img/signal_noise.png)">
+  <hgroup>
+    <h2 class="white"></h2>
+  </hgroup>
+  <footer class="source white">http://www.squidoo.com/noise-sources-signal-noise-ratio-snr-and-a-look-at-them-in-the-frequency-domain</footer>
   <!-- Presenter Notes -->
   <aside class="note">
     <section>
       <ul>
-<li>A <em>linear</em> transformation!  This is a big assumption.<br></li>
-<li>What does the transformation boil down to?<br>
-
-<ul>
-<li>Rotation and scale.. so how does that help us?</li>
-</ul></li>
+<li>Every dataset has noise and signal... How can we bring out the signal?</li>
 </ul>
 
     </section>
   </aside>
 </slide>
+      <slide class="" id="slide-9">
+<hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><span style="font-size:500%">\(SNR = \frac{\sigma^2_{signal}}{\sigma^2_{noise}}\)</span></p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+      <slide class="fill nobackground" style="background-image: url(assets/img/svn.png)">
+  <hgroup>
+    <h2 class=""></h2>
+  </hgroup>
+  <footer class="source "></footer>
+</slide>
+      <slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Rotate to maximize variance</h2>
+  </hgroup>
+  <article>
+    
+<div style='float:left;width:48%;' class='centered'>
+  <p><img style="width:500px" src="assets/img/svn.png"/></p>
+
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="assets/img/snr_rotation.png"/></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-12">
+<hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><img style="height:600px" src="assets/img/redundancy.jpg"/></p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+      <slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <pre><code class="r">library(PerformanceAnalytics)
+chart.Correlation(iris[-5], bg = iris$Species, pch = 21)
+</code></pre>
+
+<p><img src="figure/pairs.png" alt="plot of chunk pairs"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Covariance</h2>
+  </hgroup>
+  <article>
+    <p>\(
+   \DeclareMathOperator{\stddev}{stddev}
+   \DeclareMathOperator{\var}{var}
+   \DeclareMathOperator{\cov}{cov}
+   \DeclareMathOperator{\corr}{corr}
+\)
+\(\var(X) = E[(X - \mu_X)^2]\)</p>
+
+<p>\(\sigma_{XY} = \cov(X,Y) = E[(X - \mu_X)(Y - \mu_Y)]\)</p>
+
+<pre><code class="r">cov(iris[-5])
+</code></pre>
+
+<pre><code>##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length      0.68569    -0.04243       1.2743      0.5163
+## Sepal.Width      -0.04243     0.18998      -0.3297     -0.1216
+## Petal.Length      1.27432    -0.32966       3.1163      1.2956
+## Petal.Width       0.51627    -0.12164       1.2956      0.5810
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Correlation</h2>
+  </hgroup>
+  <article>
+    <p>\(\rho = \corr(X,Y) = \frac{\sigma_{XY}}{\sigma_X \sigma_Y} = \frac{\cov(X,Y)}{\stddev(X)\stddev(Y)}\)</p>
+
+<pre><code class="r">cor(iris[-5])
+</code></pre>
+
+<pre><code>##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length       1.0000     -0.1176       0.8718      0.8179
+## Sepal.Width       -0.1176      1.0000      -0.4284     -0.3661
+## Petal.Length       0.8718     -0.4284       1.0000      0.9629
+## Petal.Width        0.8179     -0.3661       0.9629      1.0000
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
       <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Slide 2</h2>
+    <h2>Slide with LaTeX</h2>
   </hgroup>
   <article>
     <p>\(\begin{align*}
