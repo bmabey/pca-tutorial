@@ -158,7 +158,7 @@ chart.Correlation(decorrelated.iris, bg = iris$Species, pch = 21)
  - it needs to optimize against the quantified version of this... Covariance/Correlation.
 
 --- &vcenter
-## Variance and Covariance Review
+## Variance and Covariance
 \(
    \DeclareMathOperator{\stddev}{stddev}
    \DeclareMathOperator{\var}{var}
@@ -190,7 +190,7 @@ chart.Correlation(decorrelated.iris, bg = iris$Species, pch = 21)
 <td>
 \[
 \begin{eqnarray*}
-\sigma^2_{AB} = \cov(A,B) &=& E[(A - \mu_A)(B - \mu_B)] \\
+\sigma_{AB} = \cov(A,B) &=& E[(A - \mu_A)(B - \mu_B)] \\
                      &=& \frac{1}{N} \sum_{i=1}^N (a_i - \mu_A)(b_i - \mu_B)
 \end{eqnarray*}
 \]
@@ -336,7 +336,12 @@ This will make our life easier...
 
 --- $vcenter
 ## Remember, we are choosing what $P$ is...
+<span style="font-size:200%">
+$$PX = Y$$
+</span>
 
+--- $vcenter
+## Remember, we are choosing what $P$ is...
 <span style="font-size:175%">Let every row, $p_i$, be an eigenvector of $\Sigma_X$.
 What this means is that $$P=Q^T$$ where $Q$ comes from the eigendecomposition of $\Sigma_X$.$$\Sigma_X = Q\Lambda Q^T$$</span>
 
@@ -354,10 +359,13 @@ What this means is that $$P=Q^T$$ where $Q$ comes from the eigendecomposition of
 \end{eqnarray*}
 \]
 </span>
-<ul class="build">
+<ul class="build fade">
+ <li>The principal components are linear combinations of original features of $X$.</li>
  <li>The principal components of $X$ are the eigenvectors of $\Sigma_X$.</li>
  <li>The corresponding eigenvaules lie in $\Sigma_Y$ and represent the variance.</li>
 </ul>
+
+---
 
 --- &vcenter
 

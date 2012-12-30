@@ -323,7 +323,7 @@ chart.Correlation(iris[-5], bg = iris$Species, pch = 21)
 
       <slide class="" id="slide-15">
 <hgroup>
-  <h2>Variance and Covariance Review</h2>
+  <h2>Variance and Covariance</h2>
 </hgroup>
 <article class = 'flexbox vcenter'>
 <p>\(
@@ -357,7 +357,7 @@ chart.Correlation(iris[-5], bg = iris$Species, pch = 21)
 <td>
 \[
 \begin{eqnarray*}
-\sigma^2_{AB} = \cov(A,B) &=& E[(A - \mu_A)(B - \mu_B)] \\
+\sigma_{AB} = \cov(A,B) &=& E[(A - \mu_A)(B - \mu_B)] \\
                      &=& \frac{1}{N} \sum_{i=1}^N (a_i - \mu_A)(b_i - \mu_B)
 \end{eqnarray*}
 \]
@@ -542,6 +542,19 @@ This will make our life easier...
     <h2>Remember, we are choosing what \(P\) is...</h2>
   </hgroup>
   <article>
+    <p><span style="font-size:200%">
+\[PX = Y\]
+</span></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Remember, we are choosing what \(P\) is...</h2>
+  </hgroup>
+  <article>
     <p><span style="font-size:175%">Let every row, \(p_i\), be an eigenvector of \(\Sigma_X\).
 What this means is that \[P=Q^T\] where \(Q\) comes from the eigendecomposition of \(\Sigma_X\).\[\Sigma_X = Q\Lambda Q^T\]</span></p>
 
@@ -549,7 +562,7 @@ What this means is that \[P=Q^T\] where \(Q\) comes from the eigendecomposition 
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-24" style="background:;">
+      <slide class="" id="slide-25" style="background:;">
   <hgroup>
     <h2>Turn the Algebra crank...</h2>
   </hgroup>
@@ -567,7 +580,8 @@ What this means is that \[P=Q^T\] where \(Q\) comes from the eigendecomposition 
 \]
 </span></p>
 
-<ul class="build">
+<ul class="build fade">
+ <li>The principal components are linear combinations of original features of $X$.</li>
  <li>The principal components of $X$ are the eigenvectors of $\Sigma_X$.</li>
  <li>The corresponding eigenvaules lie in $\Sigma_Y$ and represent the variance.</li>
 </ul>
@@ -576,7 +590,17 @@ What this means is that \[P=Q^T\] where \(Q\) comes from the eigendecomposition 
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-25">
+      <slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-27">
 <hgroup>
   
 </hgroup>
@@ -590,7 +614,7 @@ plot(iris.pca, habillage = 5, col.hab = c(&quot;green&quot;, &quot;blue&quot;, &
 </article>
 <!-- Presenter Notes -->
 </slide>
-      <slide class="" id="slide-26">
+      <slide class="" id="slide-28">
 <hgroup>
   
 </hgroup>
@@ -604,7 +628,7 @@ plot(res.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
 </article>
 <!-- Presenter Notes -->
 </slide>
-      <slide class="scree_plot" id="slide-27" style="background:;">
+      <slide class="scree_plot" id="slide-29" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -619,7 +643,7 @@ screeplot(iris.prcomp, type = &quot;line&quot;, main = &quot;Scree Plot&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="biplot" id="slide-28" style="background:;">
+      <slide class="biplot" id="slide-30" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -634,7 +658,7 @@ biplot(iris.prcomp)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-29" style="background:;">
+      <slide class="" id="slide-31" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -653,7 +677,7 @@ biplot(iris.prcomp)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-30" style="background:;">
+      <slide class="" id="slide-32" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -672,7 +696,7 @@ biplot(iris.prcomp)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-31">
+      <slide class="" id="slide-33">
 <hgroup>
   
 </hgroup>
@@ -686,7 +710,7 @@ plot(iris.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
 </article>
 <!-- Presenter Notes -->
 </slide>
-      <slide class="" id="slide-32">
+      <slide class="" id="slide-34">
 <hgroup>
   <h2>Learn more...</h2>
 </hgroup>
@@ -696,7 +720,7 @@ plot(iris.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
 </article>
 <!-- Presenter Notes -->
 </slide>
-      <slide class="" id="slide-33" style="background:;">
+      <slide class="" id="slide-35" style="background:;">
   <hgroup>
     <h2>Correlation</h2>
   </hgroup>
@@ -717,7 +741,7 @@ plot(iris.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-34" style="background:;">
+      <slide class="" id="slide-36" style="background:;">
   <hgroup>
     <h2>References and Resources</h2>
   </hgroup>
@@ -737,7 +761,7 @@ plot(iris.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-35" style="background:;">
+      <slide class="" id="slide-37" style="background:;">
   <hgroup>
     
   </hgroup>
