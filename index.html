@@ -478,6 +478,13 @@ Find some orthonormal matrix \(P\) in \(PX = Y\) such that \(\Sigma_Y = YY^T\) i
 of \(P\) are the <strong>principal components</strong> of \(X\).
 </span></p>
 
+<div class="build">
+<span>
+Note, that I transposed the design matrix (the data) so that covariance calculation is also reversed.
+This will make our life easier...
+</span>
+</div>
+
 </article>
 <!-- Presenter Notes -->
 </slide>
@@ -559,6 +566,116 @@ What this means is that \[P=Q^T\] where \(Q\) comes from the eigendecomposition 
 
       <slide class="" id="slide-25">
 <hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<pre><code class="r"># library(FactoMineR); iris.pca &lt;- PCA(iris, quali.sup=5)
+plot(iris.pca, habillage = 5, col.hab = c(&quot;green&quot;, &quot;blue&quot;, &quot;red&quot;), title = &quot;Dataset projected onto PC1-2 Subspace&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+      <slide class="" id="slide-26">
+<hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<pre><code class="r"># res.pca &lt;- PCA(decathlon, quanti.sup=11:12, quali.sup = 13)
+plot(res.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5"> </p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+      <slide class="scree_plot" id="slide-27" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <pre><code class="r">iris.prcomp &lt;- prcomp(iris[-5], center = TRUE, scale = FALSE)
+screeplot(iris.prcomp, type = &quot;line&quot;, main = &quot;Scree Plot&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-6.png" alt="plot of chunk unnamed-chunk-6"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="biplot" id="slide-28" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <pre><code class="r">iris.prcomp &lt;- prcomp(iris[-5], center = TRUE, scale = FALSE)
+biplot(iris.prcomp)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <pre><code class="r">prcomp(iris[-5])$rotation
+</code></pre>
+
+<pre><code>##                   PC1      PC2      PC3     PC4
+## Sepal.Length  0.36139 -0.65659  0.58203  0.3155
+## Sepal.Width  -0.08452 -0.73016 -0.59791 -0.3197
+## Petal.Length  0.85667  0.17337 -0.07624 -0.4798
+## Petal.Width   0.35829  0.07548 -0.54583  0.7537
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <pre><code class="r">prcomp(iris[-5])$rotation^2
+</code></pre>
+
+<pre><code>##                   PC1      PC2      PC3     PC4
+## Sepal.Length 0.130600 0.431109 0.338759 0.09953
+## Sepal.Width  0.007144 0.533136 0.357497 0.10222
+## Petal.Length 0.733885 0.030058 0.005812 0.23025
+## Petal.Width  0.128371 0.005697 0.297932 0.56800
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-31">
+<hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<pre><code class="r"># library(FactoMineR); iris.pca &lt;- PCA(iris, quali.sup=5)
+plot(iris.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-10.png" alt="plot of chunk unnamed-chunk-10"> </p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+      <slide class="" id="slide-32">
+<hgroup>
   <h2>Learn more...</h2>
 </hgroup>
 <article class = 'flexbox vcenter'>
@@ -567,7 +684,7 @@ What this means is that \[P=Q^T\] where \(Q\) comes from the eigendecomposition 
 </article>
 <!-- Presenter Notes -->
 </slide>
-      <slide class="" id="slide-26" style="background:;">
+      <slide class="" id="slide-33" style="background:;">
   <hgroup>
     <h2>Correlation</h2>
   </hgroup>
@@ -588,7 +705,7 @@ What this means is that \[P=Q^T\] where \(Q\) comes from the eigendecomposition 
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-27" style="background:;">
+      <slide class="" id="slide-34" style="background:;">
   <hgroup>
     <h2>References and Resources</h2>
   </hgroup>
@@ -603,6 +720,21 @@ What this means is that \[P=Q^T\] where \(Q\) comes from the eigendecomposition 
 <li>Quick-R, <cite><a href="http://www.statmethods.net/advstats/factor.html">Principal Components and Factor Analysis</a></cite> (good pointers to additional R packages)</li>
 <li>C Ding, X He (2004), <cite><a href="http://ranger.uta.edu/%7Echqding/papers/KmeansPCA1.pdf">K-means Clustering via Principal Component Analysis</a></cite></li>
 </ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-35" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <p>&quot;The calculation is done using eigen on the correlation or covariance matrix, as determined by cor. This is done for compatibility with the S-PLUS result. A preferred method of calculation is to use svd on x, as is done in prcomp.&quot;</p>
+
+<ul>
+<li>Docs for princomp</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->

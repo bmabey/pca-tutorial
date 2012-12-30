@@ -298,6 +298,13 @@ Find some orthonormal matrix $P$ in $PX = Y$ such that $\Sigma_Y = YY^T$ is a di
 of $P$ are the **principal components** of $X$.
 </span>
 
+<div class="build">
+<span>
+Note, that I transposed the design matrix (the data) so that covariance calculation is also reversed.
+This will make our life easier...
+</span>
+</div>
+
 ---
 ## Rewrite $\Sigma_Y$ in terms of the unknown...
 <span style="font-size:150%">
@@ -351,6 +358,89 @@ What this means is that $$P=Q^T$$ where $Q$ comes from the eigendecomposition of
 </ul>
 
 --- &vcenter
+
+
+```r
+# library(FactoMineR); iris.pca <- PCA(iris, quali.sup=5)
+plot(iris.pca, habillage = 5, col.hab = c("green", "blue", "red"), title = "Dataset projected onto PC1-2 Subspace")
+```
+
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
+
+
+
+
+--- &vcenter
+
+
+```r
+# res.pca <- PCA(decathlon, quanti.sup=11:12, quali.sup = 13)
+plot(res.pca, choix = "var", title = "Correlation Circle")
+```
+
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
+
+
+--- .scree_plot
+
+```r
+iris.prcomp <- prcomp(iris[-5], center = TRUE, scale = FALSE)
+screeplot(iris.prcomp, type = "line", main = "Scree Plot")
+```
+
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6.png) 
+
+
+--- .biplot
+
+```r
+iris.prcomp <- prcomp(iris[-5], center = TRUE, scale = FALSE)
+biplot(iris.prcomp)
+```
+
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
+
+
+---
+
+```r
+prcomp(iris[-5])$rotation
+```
+
+```
+##                   PC1      PC2      PC3     PC4
+## Sepal.Length  0.36139 -0.65659  0.58203  0.3155
+## Sepal.Width  -0.08452 -0.73016 -0.59791 -0.3197
+## Petal.Length  0.85667  0.17337 -0.07624 -0.4798
+## Petal.Width   0.35829  0.07548 -0.54583  0.7537
+```
+
+---
+
+```r
+prcomp(iris[-5])$rotation^2
+```
+
+```
+##                   PC1      PC2      PC3     PC4
+## Sepal.Length 0.130600 0.431109 0.338759 0.09953
+## Sepal.Width  0.007144 0.533136 0.357497 0.10222
+## Petal.Length 0.733885 0.030058 0.005812 0.23025
+## Petal.Width  0.128371 0.005697 0.297932 0.56800
+```
+
+--- &vcenter
+
+
+```r
+# library(FactoMineR); iris.pca <- PCA(iris, quali.sup=5)
+plot(iris.pca, choix = "var", title = "Correlation Circle")
+```
+
+![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10.png) 
+
+
+--- &vcenter
 ## Learn more...
 [<img src="assets/img/rbook.jpg"/>](http://factominer.free.fr/book/)
 
@@ -383,3 +473,8 @@ cor(iris[-5])
 1. Steve Pittard (2012), <cite>[Principal Components Analysis Using R](http://www.youtube.com/user/biorsph)</cite>
 1. Quick-R, <cite>[Principal Components and Factor Analysis](http://www.statmethods.net/advstats/factor.html)</cite> (good pointers to additional R packages)
 1. C Ding, X He (2004), <cite>[K-means Clustering via Principal Component Analysis](http://ranger.uta.edu/~chqding/papers/KmeansPCA1.pdf)</cite>
+
+
+---
+"The calculation is done using eigen on the correlation or covariance matrix, as determined by cor. This is done for compatibility with the S-PLUS result. A preferred method of calculation is to use svd on x, as is done in prcomp."
+- Docs for princomp
