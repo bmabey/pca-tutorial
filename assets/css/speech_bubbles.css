@@ -1,0 +1,504 @@
+/* ============================================================================================================================
+== OVAL SPEECH BUBBLE (more CSS3)
+** ============================================================================================================================ */
+
+.oval-speech {
+	position:relative;
+	width:270px;
+	padding:50px 40px;
+	margin:1em auto 50px;
+	text-align:center;
+	color:#fff;
+	background:#5a8f00;
+	/* css3 */
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#b8db29), to(#5a8f00));
+	background:-moz-linear-gradient(#b8db29, #5a8f00);
+	background:-o-linear-gradient(#b8db29, #5a8f00);
+	background:linear-gradient(#b8db29, #5a8f00);
+	/*
+	NOTES:
+	-webkit-border-radius:220px 120px; // produces oval in safari 4 and chrome 4
+	-webkit-border-radius:220px / 120px; // produces oval in chrome 4 (again!) but not supported in safari 4
+	Not correct application of the current spec, therefore, using longhand to avoid future problems with webkit corrects this
+	*/
+	-webkit-border-top-left-radius:220px 120px;
+	-webkit-border-top-right-radius:220px 120px;
+	-webkit-border-bottom-right-radius:220px 120px;
+	-webkit-border-bottom-left-radius:220px 120px;
+	-moz-border-radius:220px / 120px;
+	border-radius:220px / 120px;
+}
+
+.oval-speech p {font-size:1.25em;}
+
+/* creates part of the curve */
+.oval-speech:before {
+	content:"";
+	position:absolute;
+	z-index:-1;
+	bottom:-30px;
+	right:50%;
+	height:30px;
+	border-right:60px solid #5a8f00;
+	background:#5a8f00; /* need this for webkit - bug in handling of border-radius */
+	/* css3 */
+	-webkit-border-bottom-right-radius:80px 50px;
+	-moz-border-radius-bottomright:80px 50px;
+	border-bottom-right-radius:80px 50px;
+	/* using translate to avoid undesired appearance in CSS2.1-capabable but CSS3-incapable browsers */
+	-webkit-transform:translate(0, -2px);
+	-moz-transform:translate(0, -2px);
+	-ms-transform:translate(0, -2px);
+	-o-transform:translate(0, -2px);
+	transform:translate(0, -2px);
+}
+
+/* creates part of the curved pointy bit */
+.oval-speech:after {
+	content:"";
+	position:absolute;
+	z-index:-1;
+	bottom:-30px;
+	right:50%;
+	width:60px;
+	height:30px;
+	background:#fff;
+	/* css3 */
+	-webkit-border-bottom-right-radius:40px 50px;
+	-moz-border-radius-bottomright:40px 50px;
+	border-bottom-right-radius:40px 50px;
+	/* using translate to avoid undesired appearance in CSS2.1-capabable but CSS3-incapable browsers */
+	-webkit-transform:translate(-30px, -2px);
+	-moz-transform:translate(-30px, -2px);
+	-ms-transform:translate(-30px, -2px);
+	-o-transform:translate(-30px, -2px);
+	transform:translate(-30px, -2px);
+}
+
+
+/* ============================================================================================================================
+== OVAL THOUGHT BUBBLE (more CSS3)
+** ============================================================================================================================ */
+
+.oval-thought {
+	position:relative;
+	width:270px;
+	padding:50px 40px;
+	margin:1em auto 80px;
+	text-align:center;
+	color:#fff;
+	background:#075698;
+	/* css3 */
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#2e88c4), to(#075698));
+	background:-moz-linear-gradient(#2e88c4, #075698);
+	background:-o-linear-gradient(#2e88c4, #075698);
+	background:linear-gradient(#2e88c4, #075698);
+	/*
+	NOTES:
+	-webkit-border-radius:220px 120px; // produces oval in safari 4 and chrome 4
+	-webkit-border-radius:220px / 120px; // produces oval in chrome 4 (again!) but not supported in safari 4
+	Not correct application of the current spec, therefore, using longhand to avoid future problems with webkit corrects this
+	*/
+	-webkit-border-top-left-radius:220px 120px;
+	-webkit-border-top-right-radius:220px 120px;
+	-webkit-border-bottom-right-radius:220px 120px;
+	-webkit-border-bottom-left-radius:220px 120px;
+	-moz-border-radius:220px / 120px;
+	border-radius:220px / 120px;
+}
+
+.oval-thought p {font-size:1.25em;}
+
+/* creates the larger circle */
+.oval-thought:before {
+	content:"";
+	position:absolute;
+	bottom:-20px;
+	left:50px;
+	width:30px;
+	height:30px;
+	background:#075698;
+	/* css3 */
+	-webkit-border-radius:30px;
+	-moz-border-radius:30px;
+	border-radius:30px;
+}
+
+/* creates the smaller circle */
+.oval-thought:after {
+	content:"";
+	position:absolute;
+	bottom:-30px;
+	left:30px;
+	width:15px;
+	height:15px;
+	background:#075698;
+	/* css3 */
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
+	border-radius:15px;
+}
+
+/* ============================================================================================================================
+== OVAL SPEECH BUBBLE WITH QUOTATION MARKS (more CSS3)
+** ============================================================================================================================ */
+
+.oval-quotes {
+	position:relative;
+	width:400px;
+	height:350px;
+	margin:2em auto 10px;
+	color:#000;
+	background:#ffed26;
+	/* css3 */
+	/*
+	NOTES:
+	-webkit-border-radius:Apx Bpx; // produces oval in safari 4 and chrome 4
+	-webkit-border-radius:Apx / Bpx; // produces oval in chrome 4 (again!) but not supported in safari 4
+	Not correct application of the current spec, therefore, using longhand to avoid future problems with webkit corrects this
+	*/
+	-webkit-border-top-left-radius:400px 350px;
+	-webkit-border-top-right-radius:400px 350px;
+	-webkit-border-bottom-right-radius:400px 350px;
+	-webkit-border-bottom-left-radius:400px 350px;
+	-moz-border-radius:400px / 350px;
+	border-radius:400px / 350px;
+}
+
+/* creates opening quotation mark */
+.oval-quotes:before {
+	content:"\201C";
+	position:absolute;
+	z-index:1;
+	top:20px;
+	left:20px;
+	font:80px/1 Georgia, serif;
+	color:#ffed26;
+}
+
+/* creates closing quotation mark */
+.oval-quotes:after {
+	content:"\201D";
+	position:absolute;
+	z-index:1;
+	bottom:0;
+	right:20px;
+	font:80px/0.25 Georgia, serif;
+	color:#ffed26;
+}
+
+.oval-quotes p {
+	width:250px;
+	height:250px;
+	padding:50px 0 0;
+	margin:0 auto;
+	text-align:center;
+	font-size:35px;
+}
+
+/* creates smaller curve */
+.oval-quotes p:before {
+	content:"";
+	position:absolute;
+	z-index:-1;
+	bottom:-30px;
+	right:55%;
+	width:180px; /* wider than necessary to make it look a bit better in IE8 */
+	height:60px;
+	background:#fff; /* need this for webkit - bug in handling of border-radius */
+	/* css3 */
+	-webkit-border-bottom-right-radius:40px 50px;
+	-moz-border-radius-bottomright:40px 50px;
+	border-bottom-right-radius:40px 50px;
+	/* using translate to avoid undesired appearance in CSS2.1-capabable but CSS3-incapable browsers */
+	-webkit-transform:translate(-30px, -2px);
+	-moz-transform:translate(-30px, -2px);
+	-ms-transform:translate(-30px, -2px);
+	-o-transform:translate(-30px, -2px);
+	transform:translate(-30px, -2px);
+}
+
+/* creates larger curve */
+.oval-quotes p:after {
+	content:"";
+	position:absolute;
+	z-index:-2;
+	bottom:-30px;
+	right:25%;
+	height:80px;
+	border-right:200px solid #ffed26;
+	background:#ffed26; /* need this for webkit - bug in handling of border-radius */
+	/* css3 */
+	-webkit-border-bottom-right-radius:200px 100px;
+	-moz-border-radius-bottomright:200px 100px;
+	border-bottom-right-radius:200px 100px;
+	/* using translate to avoid undesired appearance in CSS2.1-capabable but CSS3-incapable browsers */
+	-webkit-transform:translate(0, -2px);
+	-moz-transform:translate(0, -2px);
+	-ms-transform:translate(0, -2px);
+	-o-transform:translate(0, -2px);
+	transform:translate(0, -2px);
+    /* reduce the damage in FF3.0 */
+    display:block;
+    width:0;
+}
+
+.oval-quotes + p {
+	position:relative; /* part of the IE8 width compromise */
+	width:150px;
+	margin:0 0 2em;
+	font-size:18px;
+	font-weight:bold;
+}
+
+
+/* ============================================================================================================================
+== RECTANGLE-BORDER STYLE WITH CURVE
+** ============================================================================================================================ */
+
+.rectangle-speech-border {
+	position:relative;
+	padding:50px 15px;
+	margin:1em 0 3em;
+	border:10px solid #5a8f00;
+	text-align:center;
+	color:#333;
+	background:#fff;
+	/* css3 */
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	border-radius:20px;
+}
+
+/* creates larger curve */
+.rectangle-speech-border:before {
+	content:"";
+	position:absolute;
+	z-index:10;
+	bottom:-40px;
+	left:50px;
+	width:50px;
+	height:30px;
+	border-style:solid;
+	border-width:0 10px 10px 0;
+	border-color:#5a8f00;
+	background:transparent;
+	/* css3 */
+	-webkit-border-bottom-right-radius:80px 50px;
+	-moz-border-radius-bottomright:80px 50px;
+	border-bottom-right-radius:80px 50px;
+    /* reduce the damage in FF3.0 */
+    display:block;
+}
+
+/* creates smaller curve */
+.rectangle-speech-border:after {
+	content:"";
+	position:absolute;
+	z-index:10;
+	bottom:-40px;
+	left:50px;
+	width:20px;
+	height:30px;
+	border-style:solid;
+	border-width:0 10px 10px 0;
+	border-color:#5a8f00;
+	background:transparent;
+	/* css3 */
+	-webkit-border-bottom-right-radius:40px 50px;
+	-moz-border-radius-bottomright:40px 50px;
+	border-bottom-right-radius:40px 50px;
+    /* reduce the damage in FF3.0 */
+    display:block;
+}
+
+/* creates a small circle to produce a rounded point where the two curves meet */
+.rectangle-speech-border > :first-child:before {
+	content:"";
+	position:absolute;
+	bottom:-40px;
+	left:45px;
+	width:10px;
+	height:10px;
+	background:#5a8f00;
+	/* css3 */
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+}
+
+/* creates a white rectangle to cover part of the oval border*/
+.rectangle-speech-border > :first-child:after {
+	content:"";
+	position:absolute;
+	bottom:-10px;
+	left:76px;
+	width:24px;
+	height:15px;
+	background:#fff;
+}
+
+/* ============================================================================================================================
+== OVER SPEECH BUBBLE, EMPTY, WITH BORDER (more CSS3)
+** ============================================================================================================================ */
+
+.oval-speech-border {
+	position:relative;
+	padding:70px 30px;
+	margin:1em auto 60px;
+	border:10px solid #f3961c;
+	text-align:center;
+	color:#333;
+	background:#fff;
+	/* css3 */
+	/*
+	NOTES:
+	-webkit-border-radius:240px 140px; // produces oval in safari 4 and chrome 4
+	-webkit-border-radius:240px / 140px; // produces oval in chrome 4 (again!) but not supported in safari 4
+	Not correct application of the current spec, therefore, using longhand to avoid future problems with webkit corrects this
+	*/
+	-webkit-border-top-left-radius:240px 140px;
+	-webkit-border-top-right-radius:240px 140px;
+	-webkit-border-bottom-right-radius:240px 140px;
+	-webkit-border-bottom-left-radius:240px 140px;
+	-moz-border-radius:240px / 140px;
+	border-radius:240px / 140px;
+}
+
+/* creates larger curve */
+.oval-speech-border:before {
+	content:"";
+	position:absolute;
+	z-index:2;
+	bottom:-40px;
+	right:50%;
+	width:50px;
+	height:30px;
+	border-style:solid;
+	border-width:0 10px 10px 0;
+	border-color:#f3961c;
+	margin-right:-10px;
+	background:transparent;
+	/* css3 */
+	-webkit-border-bottom-right-radius:80px 50px;
+	-moz-border-radius-bottomright:80px 50px;
+	border-bottom-right-radius:80px 50px;
+    /* reduce the damage in FF3.0 */
+    display:block;
+}
+
+/* creates smaller curve */
+.oval-speech-border:after {
+	content:"";
+	position:absolute;
+	z-index:2;
+	bottom:-40px;
+	right:50%;
+	width:20px;
+	height:31px;
+	border-style:solid;
+	border-width:0 10px 10px 0;
+	border-color:#f3961c;
+	margin-right:20px;
+	background:transparent;
+	/* css3 */
+	-webkit-border-bottom-right-radius:40px 50px;
+	-moz-border-radius-bottomright:40px 50px;
+	border-bottom-right-radius:40px 50px;
+    /* reduce the damage in FF3.0 */
+    display:block;
+}
+
+/* creates a small circle to produce a rounded point where the two curves meet */
+.oval-speech-border > :first-child:before {
+	content:"";
+	position:absolute;
+	z-index:1;
+	bottom:-40px;
+	right:50%;
+	width:10px;
+	height:10px;
+	margin-right:45px;
+	background:#f3961c;
+	/* css3 */
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+}
+
+/* creates a white rectangle to cover part of the oval border*/
+.oval-speech-border > :first-child:after {
+	content:"";
+	position:absolute;
+	z-index:1;
+	bottom:-10px;
+	right:50%;
+	width:30px;
+	height:15px;
+	background:#fff;
+}
+
+/* ============================================================================================================================
+== OVER THOUGHT BUBBLE, EMPTY, WITH BORDER (more CSS3)
+** ============================================================================================================================ */
+
+.oval-thought-border {
+	position:relative;
+	padding:70px 30px;
+	margin:1em auto 80px;
+	border:10px solid #c81e2b;
+	text-align:center;
+	color:#333;
+	background:#fff;
+	/* css3 */
+	/*
+	NOTES:
+	-webkit-border-radius:240px 140px; // produces oval in safari 4 and chrome 4
+	-webkit-border-radius:240px / 140px; // produces oval in chrome 4 (again!) but not supported in safari 4
+	Not correct application of the current spec, therefore, using longhand to avoid future problems with webkit corrects this
+	*/
+	-webkit-border-top-left-radius:240px 140px;
+	-webkit-border-top-right-radius:240px 140px;
+	-webkit-border-bottom-right-radius:240px 140px;
+	-webkit-border-bottom-left-radius:240px 140px;
+	-moz-border-radius:240px / 140px;
+	border-radius:240px / 140px;
+}
+
+/* creates the larger circle */
+.oval-thought-border:before {
+	content:"";
+	position:absolute;
+	z-index:10;
+	bottom:-40px;
+	right:100px;
+	width:50px;
+	height:50px;
+	border:10px solid #c81e2b;
+	background:#fff;
+	/* css3 */
+	-webkit-border-radius:50px;
+	-moz-border-radius:50px;
+	border-radius:50px;
+    /* reduce the damage in FF3.0 */
+    display:block;
+}
+
+/* creates the smaller circle */
+.oval-thought-border:after {
+	content:"";
+	position:absolute;
+	z-index:10;
+	bottom:-60px;
+	right:50px;
+	width:25px;
+	height:25px;
+	border:10px solid #c81e2b;
+	background:#fff;
+	/* css3 */
+	-webkit-border-radius:25px;
+	-moz-border-radius:25px;
+	border-radius:25px;
+    /* reduce the damage in FF3.0 */
+    display:block;
+}
