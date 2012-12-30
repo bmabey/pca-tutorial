@@ -202,21 +202,92 @@ unitless measure $(-1.0..1.0)$
 <div> $\sigma_{AB}$ or $\rho_{AB}$ is $0$ if and only if $A$ and $B$ are uncorrelated.</div>
 </div>
 
----
+--- $vcenter
 
 ## Covariance Matrix
 
-Preprocess $X$ so that it is mean centered (has zero mean) so that $\cov(A,B) = $
 \[
 \Sigma
 = \begin{bmatrix}
- \mathrm{E}[(X_1 - \mu_1)(X_1 - \mu_1)] & \mathrm{E}[(X_1 - \mu_1)(X_2 - \mu_2)] & \cdots & \mathrm{E}[(X_1 - \mu_1)(X_n - \mu_n)] \\ \\
- \mathrm{E}[(X_2 - \mu_2)(X_1 - \mu_1)] & \mathrm{E}[(X_2 - \mu_2)(X_2 - \mu_2)] & \cdots & \mathrm{E}[(X_2 - \mu_2)(X_n - \mu_n)] \\ \\
+ \sigma_{1,1} & \sigma_{1,2} & \cdots &  \sigma_{1,n} \\ \\
+ \sigma_{2,1} & \sigma_{2,2} & \cdots &  \sigma_{2,n} \\ \\
  \vdots & \vdots & \ddots & \vdots \\ \\
- \mathrm{E}[(X_n - \mu_n)(X_1 - \mu_1)] & \mathrm{E}[(X_n - \mu_n)(X_2 - \mu_2)] & \cdots & \mathrm{E}[(X_n - \mu_n)(X_n - \mu_n)]
+ \sigma_{n,1} & \sigma_{n,2} & \cdots &  \sigma_{n,n} \\ \\
 \end{bmatrix}
 \]
 
+<div class="build">
+<div>Preprocess $X$ so that it has zero mean.
+Now $\sigma_{AB} = \frac 1n \sum_{i=1}^n a_i b_i$</div>
+<div style="font-size:300%">$$\Sigma_X = \frac{1}{n}X^TX$$</div>
+</div>
+
+---
+
+```r
+center <- function(x) x - mean(x)
+m.centered <- apply(as.matrix(iris[-5]), 2, center)
+(t(m.centered) %*% m.centered)/(nrow(iris) - 1)
+```
+
+```
+##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length      0.68569    -0.04243       1.2743      0.5163
+## Sepal.Width      -0.04243     0.18998      -0.3297     -0.1216
+## Petal.Length      1.27432    -0.32966       3.1163      1.2956
+## Petal.Width       0.51627    -0.12164       1.2956      0.5810
+```
+
+----
+
+```r
+center <- function(x) x - mean(x)
+m.centered <- apply(as.matrix(iris[-5]), 2, center)
+(t(m.centered) %*% m.centered)/(nrow(iris) - 1)
+```
+
+```
+##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length      0.68569    -0.04243       1.2743      0.5163
+## Sepal.Width      -0.04243     0.18998      -0.3297     -0.1216
+## Petal.Length      1.27432    -0.32966       3.1163      1.2956
+## Petal.Width       0.51627    -0.12164       1.2956      0.5810
+```
+
+
+
+```r
+cov(iris[-5])
+```
+
+```
+##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length      0.68569    -0.04243       1.2743      0.5163
+## Sepal.Width      -0.04243     0.18998      -0.3297     -0.1216
+## Petal.Length      1.27432    -0.32966       3.1163      1.2956
+## Petal.Width       0.51627    -0.12164       1.2956      0.5810
+```
+
+
+--- $vcenter
+
+## What would our ideal $\Sigma_Y$ look like?
+<span style="font-size:200%">
+$$PX = Y$$
+</span>
+<div class="build">
+<div>
+\[
+\Sigma_Y =
+ \begin{bmatrix}
+   \sigma^2_1\\
+    & \sigma^2_2 & \Huge 0\\
+    & & \ddots\\
+    & \Huge 0 & & \sigma^2_n\\
+ \end{bmatrix}
+\]
+</div>
+</div>
 
 --- &vcenter
 ## Learn more...

@@ -365,22 +365,107 @@ unitless measure $(-1.0..1.0)$
     <h2>Covariance Matrix</h2>
   </hgroup>
   <article>
-    <p>Preprocess \(X\) so that it is mean centered (has zero mean) so that $\cov(A,B) = $
-\[
+    <p>\[
 \Sigma
 = \begin{bmatrix}
- \mathrm{E}[(X_1 - \mu_1)(X_1 - \mu_1)] & \mathrm{E}[(X_1 - \mu_1)(X_2 - \mu_2)] & \cdots & \mathrm{E}[(X_1 - \mu_1)(X_n - \mu_n)] \\ \\
- \mathrm{E}[(X_2 - \mu_2)(X_1 - \mu_1)] & \mathrm{E}[(X_2 - \mu_2)(X_2 - \mu_2)] & \cdots & \mathrm{E}[(X_2 - \mu_2)(X_n - \mu_n)] \\ \\
+ \sigma_{1,1} & \sigma_{1,2} & \cdots &  \sigma_{1,n} \\ \\
+ \sigma_{2,1} & \sigma_{2,2} & \cdots &  \sigma_{2,n} \\ \\
  \vdots & \vdots & \ddots & \vdots \\ \\
- \mathrm{E}[(X_n - \mu_n)(X_1 - \mu_1)] & \mathrm{E}[(X_n - \mu_n)(X_2 - \mu_2)] & \cdots & \mathrm{E}[(X_n - \mu_n)(X_n - \mu_n)]
+ \sigma_{n,1} & \sigma_{n,2} & \cdots &  \sigma_{n,n} \\ \\
 \end{bmatrix}
 \]</p>
+
+<div class="build">
+<div>Preprocess $X$ so that it has zero mean.
+Now $\sigma_{AB} = \frac 1n \sum_{i=1}^n a_i b_i$</div>
+<div style="font-size:300%">$$\Sigma_X = \frac{1}{n}X^TX$$</div>
+</div>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-17">
+      <slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <pre><code class="r">center &lt;- function(x) x - mean(x)
+m.centered &lt;- apply(as.matrix(iris[-5]), 2, center)
+(t(m.centered) %*% m.centered)/(nrow(iris) - 1)
+</code></pre>
+
+<pre><code>##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length      0.68569    -0.04243       1.2743      0.5163
+## Sepal.Width      -0.04243     0.18998      -0.3297     -0.1216
+## Petal.Length      1.27432    -0.32966       3.1163      1.2956
+## Petal.Width       0.51627    -0.12164       1.2956      0.5810
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <pre><code class="r">center &lt;- function(x) x - mean(x)
+m.centered &lt;- apply(as.matrix(iris[-5]), 2, center)
+(t(m.centered) %*% m.centered)/(nrow(iris) - 1)
+</code></pre>
+
+<pre><code>##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length      0.68569    -0.04243       1.2743      0.5163
+## Sepal.Width      -0.04243     0.18998      -0.3297     -0.1216
+## Petal.Length      1.27432    -0.32966       3.1163      1.2956
+## Petal.Width       0.51627    -0.12164       1.2956      0.5810
+</code></pre>
+
+<pre><code class="r">cov(iris[-5])
+</code></pre>
+
+<pre><code>##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length      0.68569    -0.04243       1.2743      0.5163
+## Sepal.Width      -0.04243     0.18998      -0.3297     -0.1216
+## Petal.Length      1.27432    -0.32966       3.1163      1.2956
+## Petal.Width       0.51627    -0.12164       1.2956      0.5810
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>What would our ideal \(\Sigma_Y\) look like?</h2>
+  </hgroup>
+  <article>
+    <p><span style="font-size:200%">
+\[PX = Y\]
+</span></p>
+
+<div class="build">
+<div>
+\[
+\Sigma_Y =
+ \begin{bmatrix}
+   \sigma^2_1\\
+    & \sigma^2_2 & \Huge 0\\
+    & & \ddots\\
+    & \Huge 0 & & \sigma^2_n\\
+ \end{bmatrix}
+\]
+</div>
+
+<p></div></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-20">
 <hgroup>
   <h2>Learn more...</h2>
 </hgroup>
@@ -390,7 +475,7 @@ unitless measure $(-1.0..1.0)$
 </article>
 <!-- Presenter Notes -->
 </slide>
-      <slide class="" id="slide-18" style="background:;">
+      <slide class="" id="slide-21" style="background:;">
   <hgroup>
     <h2>Correlation</h2>
   </hgroup>
@@ -411,7 +496,7 @@ unitless measure $(-1.0..1.0)$
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-19" style="background:;">
+      <slide class="" id="slide-22" style="background:;">
   <hgroup>
     <h2>References and Resources</h2>
   </hgroup>
@@ -453,7 +538,7 @@ K_*^T & K_{**}
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-21" style="background:;">
+      <slide class="" id="slide-24" style="background:;">
   <hgroup>
     <h2>Experimenting with speech bubbles...</h2>
   </hgroup>
