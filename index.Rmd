@@ -249,7 +249,22 @@ $$PX = Y$$
     & \Huge 0 & & \sigma^2_n\\
  \end{bmatrix}
 \]
+i.e. $Y$ is decorrelated.
 </div>
+</div>
+
+
+--- &full_image local:strang.jpg text_class:white
+
+## Spectral Theorem / Principal Axis Theorem
+
+<div style="float:left;width:300px">
+</div>
+<div style="width:500px; float:right;">
+<blockquote class="rectangle-speech-border">
+<p>Every symmetric matrix has the eigendecomposition (i.e. can be diagnolized) of:
+\[A = Q\Lambda Q^{-1} = Q\Lambda Q^T \]</p>
+</blockquote>
 </div>
 
 --- &vcenter
@@ -275,42 +290,3 @@ cor(iris[-5])
 1. Steve Pittard (2012), <cite>[Principal Components Analysis Using R](http://www.youtube.com/user/biorsph)</cite>
 1. Quick-R, <cite>[Principal Components and Factor Analysis](http://www.statmethods.net/advstats/factor.html)</cite> (good pointers to additional R packages)
 1. C Ding, X He (2004), <cite>[K-means Clustering via Principal Component Analysis](http://ranger.uta.edu/~chqding/papers/KmeansPCA1.pdf)</cite>
-
-
---- .class #id
-
-## Slide with LaTeX
-
-\(\begin{align*}
-&\begin{bmatrix}
-\mathbf{y}\\
-y_*
-\end{bmatrix}
-=\mathcal{N}\left(0,\begin{bmatrix}
-K & K_*\\
-K_*^T & K_{**}
-\end{bmatrix}\right)\\
-\Longrightarrow & y_*|\mathbf{y}\sim\mathcal{N}\left(K_*K^{-1}\mathbf{y},K_{**}-K_*K^{-1}K_*^T\right)\\
-\Longrightarrow & \overline{y_*}=K_*K^{-1}\mathbf{y}
-\end{align*}\)
-
-
----
-
-## Experimenting with speech bubbles...
-
-<blockquote class="oval-speech">
-<p>This is a blockquote that is styled to look like a speech bubble</p>
-</blockquote>
-
-<blockquote class="rectangle-speech-border">
-<p>This is a blockquote that is styled to look like a speech bubble</p>
-</blockquote>
-
-<blockquote class="oval-speech-border">
-<p>This is a blockquote that is styled to look like a speech bubble</p>
-</blockquote>
-
-<blockquote class="oval-thought-border">
-<p>This is a blockquote that is styled to look like a thought bubble</p>
-</blockquote>

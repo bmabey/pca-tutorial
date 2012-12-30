@@ -188,6 +188,7 @@
   <hgroup>
     <h2 class="white"></h2>
   </hgroup>
+  
   <footer class="source white">http://www.squidoo.com/noise-sources-signal-noise-ratio-snr-and-a-look-at-them-in-the-frequency-domain</footer>
   <!-- Presenter Notes -->
   <aside class="note">
@@ -213,6 +214,7 @@
   <hgroup>
     <h2 class=""></h2>
   </hgroup>
+  
   <footer class="source "></footer>
 </slide>
       <slide class="" id="slide-11" style="background:;">
@@ -457,6 +459,7 @@ m.centered &lt;- apply(as.matrix(iris[-5]), 2, center)
     & \Huge 0 & & \sigma^2_n\\
  \end{bmatrix}
 \]
+i.e. $Y$ is decorrelated.
 </div>
 
 <p></div></p>
@@ -465,7 +468,23 @@ m.centered &lt;- apply(as.matrix(iris[-5]), 2, center)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-20">
+      <slide class="fill nobackground" style="background-image: url(assets/img/strang.jpg)">
+  <hgroup>
+    <h2 class="white">Spectral Theorem / Principal Axis Theorem</h2>
+  </hgroup>
+  <div style="float:left;width:300px">
+</div>
+
+<div style="width:500px; float:right;">
+<blockquote class="rectangle-speech-border">
+<p>Every symmetric matrix has the eigendecomposition (i.e. can be diagnolized) of:
+\[A = Q\Lambda Q^{-1} = Q\Lambda Q^T \]</p>
+</blockquote>
+</div>
+
+  <footer class="source white"></footer>
+</slide>
+      <slide class="" id="slide-21">
 <hgroup>
   <h2>Learn more...</h2>
 </hgroup>
@@ -475,7 +494,7 @@ m.centered &lt;- apply(as.matrix(iris[-5]), 2, center)
 </article>
 <!-- Presenter Notes -->
 </slide>
-      <slide class="" id="slide-21" style="background:;">
+      <slide class="" id="slide-22" style="background:;">
   <hgroup>
     <h2>Correlation</h2>
   </hgroup>
@@ -496,7 +515,7 @@ m.centered &lt;- apply(as.matrix(iris[-5]), 2, center)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-22" style="background:;">
+      <slide class="" id="slide-23" style="background:;">
   <hgroup>
     <h2>References and Resources</h2>
   </hgroup>
@@ -511,53 +530,6 @@ m.centered &lt;- apply(as.matrix(iris[-5]), 2, center)
 <li>Quick-R, <cite><a href="http://www.statmethods.net/advstats/factor.html">Principal Components and Factor Analysis</a></cite> (good pointers to additional R packages)</li>
 <li>C Ding, X He (2004), <cite><a href="http://ranger.uta.edu/%7Echqding/papers/KmeansPCA1.pdf">K-means Clustering via Principal Component Analysis</a></cite></li>
 </ol>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Slide with LaTeX</h2>
-  </hgroup>
-  <article>
-    <p>\(\begin{align*}
-&\begin{bmatrix}
-\mathbf{y}\\
-y_*
-\end{bmatrix}
-=\mathcal{N}\left(0,\begin{bmatrix}
-K & K_*\\
-K_*^T & K_{**}
-\end{bmatrix}\right)\\
-\Longrightarrow & y_*|\mathbf{y}\sim\mathcal{N}\left(K_*K^{-1}\mathbf{y},K_{**}-K_*K^{-1}K_*^T\right)\\
-\Longrightarrow & \overline{y_*}=K_*K^{-1}\mathbf{y}
-\end{align*}\)</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="" id="slide-24" style="background:;">
-  <hgroup>
-    <h2>Experimenting with speech bubbles...</h2>
-  </hgroup>
-  <article>
-    <blockquote class="oval-speech">
-<p>This is a blockquote that is styled to look like a speech bubble</p>
-</blockquote>
-
-<blockquote class="rectangle-speech-border">
-<p>This is a blockquote that is styled to look like a speech bubble</p>
-</blockquote>
-
-<blockquote class="oval-speech-border">
-<p>This is a blockquote that is styled to look like a speech bubble</p>
-</blockquote>
-
-<blockquote class="oval-thought-border">
-<p>This is a blockquote that is styled to look like a thought bubble</p>
-</blockquote>
 
   </article>
   <!-- Presenter Notes -->

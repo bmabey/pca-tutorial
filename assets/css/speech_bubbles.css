@@ -260,7 +260,7 @@
 	position:relative;
 	padding:50px 15px;
 	margin:1em 0 3em;
-	border:10px solid #5a8f00;
+	border:10px solid #CC2904;
 	text-align:center;
 	color:#333;
 	background:#fff;
@@ -281,7 +281,7 @@
 	height:30px;
 	border-style:solid;
 	border-width:0 10px 10px 0;
-	border-color:#5a8f00;
+	border-color:#CC2904;
 	background:transparent;
 	/* css3 */
 	-webkit-border-bottom-right-radius:80px 50px;
@@ -302,7 +302,7 @@
 	height:30px;
 	border-style:solid;
 	border-width:0 10px 10px 0;
-	border-color:#5a8f00;
+	border-color:#CC2904;
 	background:transparent;
 	/* css3 */
 	-webkit-border-bottom-right-radius:40px 50px;
@@ -320,7 +320,7 @@
 	left:45px;
 	width:10px;
 	height:10px;
-	background:#5a8f00;
+	background:#CC2904;
 	/* css3 */
 	-webkit-border-radius:10px;
 	-moz-border-radius:10px;
