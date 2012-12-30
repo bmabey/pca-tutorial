@@ -8,6 +8,8 @@ highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      #
 widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
+biglogo     : logos/01_Full-Seal.png
+logo        : logos/03_Keyart.png
 
 --- &twocol
 
