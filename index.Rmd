@@ -11,7 +11,7 @@ mode        : selfcontained # {standalone, draft}
 
 --- &twocol
 
-## The versatile PCA
+## The ubiquitous & versatile PCA
 
 *** left
 * Dimensionality Reduction
@@ -120,13 +120,21 @@ mode        : selfcontained # {standalone, draft}
 
 <img style="height:600px" src="assets/img/redundancy.jpg"/>
 
+*** pnotes
+- The logo dimension and the text dimension are redunant and we can reduce it down to a single dimension. :)
+- "In the real world" you are given datasets with redundanat data all the time...
+ - Different kinds of measurements of same event (i.e. different types of brain scans)
+ - Even duplicated features with transform + noise.
+- We want a set of features, principal components, that are not redundant.  That way we can select the most "principal" ones and throw away the rest.
+- Another name for redundancy is correlation.
+ - We want to decorrelate the variables.
+
 ---
 
 ```{r pairs, warning=FALSE, error=FALSE, message=FALSE}
 library(PerformanceAnalytics)
 chart.Correlation(iris[-5], bg=iris$Species, pch=21)
 ```
-
 
 ---
 
@@ -135,7 +143,12 @@ decorrelated.iris <- prcomp(iris[-5])$x
 chart.Correlation(decorrelated.iris, bg=iris$Species, pch=21)
 ```
 
----
+*** pnotes
+
+- Of course PCA doesn't work by looking at scatter plot pairs.
+ - it needs to optimize against the quantified version of this... Covariance/Correlation.
+
+--- &vcenter
 ## Variance and Covariance Review
 \(
    \DeclareMathOperator{\stddev}{stddev}
@@ -153,18 +166,54 @@ chart.Correlation(decorrelated.iris, bg=iris$Species, pch=21)
 </thead>
 <tr>
 <td>Dispersion</td>
-<td>$$\var(X) = E[(X - \mu_X)^2]$$</td>
-<td>$$\sigma_X = \stddev(X) = \sqrt{\var(X)}$$</td>
+<td>
+\[
+\begin{eqnarray*}
+\sigma^2_A = \var(A) &=& E[(A - \mu_A)^2] \\
+                     &=& \frac{1}{N} \sum_{i=1}^N (a_i - \mu_A)^2
+\end{eqnarray*}
+\]
+</td>
+<td>$$\sigma_A = \stddev(A) = \sqrt{\var(A)}$$</td>
 </tr>
 <tr>
 <td>Relationship</td>
-<td>$$\sigma_{XY} = \cov(X,Y) = E[(X - \mu_X)(Y - \mu_Y)]$$</td>
-<td>$$\rho_{XY} = \frac{\sigma_{XY}}{\sigma_X\ \sigma_Y} = \frac{\cov(XY)}{\stddev(X) \stddev(Y)}$$ </td>
+<td>
+\[
+\begin{eqnarray*}
+\sigma^2_{AB} = \cov(A,B) &=& E[(A - \mu_A)(B - \mu_B)] \\
+                     &=& \frac{1}{N} \sum_{i=1}^N (a_i - \mu_A)(b_i - \mu_B)
+\end{eqnarray*}
+\]
+</td>
+<td>$$\rho_{AB} = \frac{\sigma_{AB}}{\sigma_A\ \sigma_B} = \frac{\cov(AB)}{\stddev(A) \stddev(B)}$$
+unitless measure $(-1.0..1.0)$
+</td>
 </tr>
 </table>
-<div> $$\cov(X,X) = \var(X)$$ </div>
-<div> $\corr(X,Y)$ unitless intuitive measure $(-1.0..1.0)$</div>
+<div> $$\cov(A,A) = \var(A)$$ </div>
+<div> $\sigma_{AB}$ or $\rho_{AB}$ is $0$ if and only if $A$ and $B$ are uncorrelated.</div>
 </div>
+
+---
+
+## Covariance Matrix
+
+Preprocess $X$ so that it is mean centered (has zero mean) so that $\cov(A,B) = $
+\[
+\Sigma
+= \begin{bmatrix}
+ \mathrm{E}[(X_1 - \mu_1)(X_1 - \mu_1)] & \mathrm{E}[(X_1 - \mu_1)(X_2 - \mu_2)] & \cdots & \mathrm{E}[(X_1 - \mu_1)(X_n - \mu_n)] \\ \\
+ \mathrm{E}[(X_2 - \mu_2)(X_1 - \mu_1)] & \mathrm{E}[(X_2 - \mu_2)(X_2 - \mu_2)] & \cdots & \mathrm{E}[(X_2 - \mu_2)(X_n - \mu_n)] \\ \\
+ \vdots & \vdots & \ddots & \vdots \\ \\
+ \mathrm{E}[(X_n - \mu_n)(X_1 - \mu_1)] & \mathrm{E}[(X_n - \mu_n)(X_2 - \mu_2)] & \cdots & \mathrm{E}[(X_n - \mu_n)(X_n - \mu_n)]
+\end{bmatrix}
+\]
+
+
+--- &vcenter
+## Learn more...
+[<img src="assets/img/rbook.jpg"/>](http://factominer.free.fr/book/)
 
 ---
 ## Correlation
@@ -185,6 +234,7 @@ cor(iris[-5])
 1. Steve Pittard (2012), <cite>[Principal Components Analysis Using R](http://www.youtube.com/user/biorsph)</cite>
 1. Quick-R, <cite>[Principal Components and Factor Analysis](http://www.statmethods.net/advstats/factor.html)</cite> (good pointers to additional R packages)
 1. C Ding, X He (2004), <cite>[K-means Clustering via Principal Component Analysis](http://ranger.uta.edu/~chqding/papers/KmeansPCA1.pdf)</cite>
+
 
 --- .class #id
 
