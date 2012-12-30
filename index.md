@@ -179,7 +179,7 @@ chart.Correlation(decorrelated.iris, bg = iris$Species, pch = 21)
 \[
 \begin{eqnarray*}
 \sigma^2_A = \var(A) &=& E[(A - \mu_A)^2] \\
-                     &=& \frac{1}{N} \sum_{i=1}^N (a_i - \mu_A)^2
+                     &=& \frac{1}{n} \sum_{i=1}^n (a_i - \mu_A)^2
 \end{eqnarray*}
 \]
 </td>
@@ -191,7 +191,7 @@ chart.Correlation(decorrelated.iris, bg = iris$Species, pch = 21)
 \[
 \begin{eqnarray*}
 \sigma_{AB} = \cov(A,B) &=& E[(A - \mu_A)(B - \mu_B)] \\
-                     &=& \frac{1}{N} \sum_{i=1}^N (a_i - \mu_A)(b_i - \mu_B)
+                     &=& \frac{1}{n} \sum_{i=1}^n (a_i - \mu_A)(b_i - \mu_B)
 \end{eqnarray*}
 \]
 </td>
@@ -228,8 +228,8 @@ Now $\sigma_{AB} = \frac 1n \sum_{i=1}^n a_i b_i$</div>
 
 ```r
 center <- function(x) x - mean(x)
-m.centered <- apply(as.matrix(iris[-5]), 2, center)
-(t(m.centered) %*% m.centered)/(nrow(iris) - 1)
+iris.centered <- apply(as.matrix(iris[-5]), 2, center)
+(t(iris.centered) %*% iris.centered)/(nrow(iris) - 1)
 ```
 
 ```
@@ -366,69 +366,32 @@ What this means is that $$P=Q^T$$ where $Q$ comes from the eigendecomposition of
 </ul>
 
 ---
-
---- &vcenter
-
+## Manual PCA in R
 
 ```r
-# library(FactoMineR); iris.pca <- PCA(iris, quali.sup=5)
-plot(iris.pca, habillage = 5, col.hab = c("green", "blue", "red"), title = "Dataset projected onto PC1-2 Subspace")
-```
-
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
-
-
-
-
---- &vcenter
-
-
-```r
-# res.pca <- PCA(decathlon, quanti.sup=11:12, quali.sup = 13)
-plot(res.pca, choix = "var", title = "Correlation Circle")
-```
-
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
-
-
---- .scree_plot
-
-```r
-iris.prcomp <- prcomp(iris[-5], center = TRUE, scale = FALSE)
-screeplot(iris.prcomp, type = "line", main = "Scree Plot")
-```
-
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6.png) 
-
-
---- .biplot
-
-```r
-iris.prcomp <- prcomp(iris[-5], center = TRUE, scale = FALSE)
-biplot(iris.prcomp)
-```
-
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
-
-
----
-
-```r
-prcomp(iris[-5])$rotation
+iris.eigen = eigen(cov(iris.centered))
+rownames(iris.eigen$vectors) = colnames(iris.centered)
+colnames(iris.eigen$vectors) = c("PC1", "PC2", "PC3", "PC4")
+iris.eigen
 ```
 
 ```
+## $values
+## [1] 4.22824 0.24267 0.07821 0.02384
+## 
+## $vectors
 ##                   PC1      PC2      PC3     PC4
-## Sepal.Length  0.36139 -0.65659  0.58203  0.3155
-## Sepal.Width  -0.08452 -0.73016 -0.59791 -0.3197
-## Petal.Length  0.85667  0.17337 -0.07624 -0.4798
-## Petal.Width   0.35829  0.07548 -0.54583  0.7537
+## Sepal.Length  0.36139 -0.65659 -0.58203  0.3155
+## Sepal.Width  -0.08452 -0.73016  0.59791 -0.3197
+## Petal.Length  0.85667  0.17337  0.07624 -0.4798
+## Petal.Width   0.35829  0.07548  0.54583  0.7537
 ```
 
 ---
+## Make the contributions intuitive...
 
 ```r
-prcomp(iris[-5])$rotation^2
+iris.eigen$vectors^2
 ```
 
 ```
@@ -439,6 +402,17 @@ prcomp(iris[-5])$rotation^2
 ## Petal.Width  0.128371 0.005697 0.297932 0.56800
 ```
 
+---
+
+```r
+squared <- iris.eigen$vectors^2
+sorted.squares <- squared[order(squared[, 1]), 1]
+dotplot(sorted.squares, main = "Variable Contributions to PC1", cex = 1.5, col = "red")
+```
+
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6.png) 
+
+
 --- &vcenter
 
 
@@ -447,12 +421,127 @@ prcomp(iris[-5])$rotation^2
 plot(iris.pca, choix = "var", title = "Correlation Circle")
 ```
 
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
+
+--- &vcenter
+
+
+```r
+# res.pca <- PCA(decathlon, quanti.sup=11:12, quali.sup = 13)
+plot(res.pca, choix = "var", title = "Correlation Circle")
+```
+
+![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
+
+
+
+---
+## What does the variance (eigenvaules) tell us?
+
+```r
+iris.eigen$values  # The variance for each corresponding PC
+```
+
+```
+## [1] 4.22824 0.24267 0.07821 0.02384
+```
+
+<div class="build">
+  <img src="assets/img/pca_transform.png"/>
+</div>
+
+*** pnotes
+-  We can easily reduce this down to two dimensions.
+
+--- &vcenter
+
+
+```r
+# library(FactoMineR); iris.pca <- PCA(iris, quali.sup=5)
+plot(iris.pca, habillage = 5, col.hab = c("green", "blue", "red"), title = "Dataset projected onto PC1-2 Subspace")
+```
+
 ![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10.png) 
 
+
+*** pnotes
+
+- Talk about how a new observation would be projected in and then the distance could be measured for classification or other reasons.
+
+---
+## How many components should you keep?
+
+Ratio of variance retained (e.g. 99% is common):
+
+<span style="font-weight:200%">
+$$\frac{\sum_{i=1}^k \sigma_i}{\sum_{i=1}^n \sigma_i}$$
+</span>
+
+```r
+cumsum(iris.eigen$values/sum(iris.eigen$values))
+```
+
+```
+## [1] 0.9246 0.9777 0.9948 1.0000
+```
+
+
+--- .scree_plot
+## The Elbow Test
+<div class="build">
+<img style="float:right;height:450px;padding-top:100px;" src="assets/img/scree.jpg"/>
+</div>
+
+```r
+iris.prcomp <- prcomp(iris[-5], center = TRUE, scale = FALSE)
+screeplot(iris.prcomp, type = "line", main = "Scree Plot")
+```
+
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12.png) 
+
+
+---
+## Kaiser Criterion
+Keep only the components whose eigenvalue is larger than the average eigenvalue.
+For a correlation PCA, this rule boils down to the standard advice to "keep only the eigenvalues larger than 1".
+
+```r
+eigen(cor(iris.centered))$values
+```
+
+```
+## [1] 2.91850 0.91403 0.14676 0.02071
+```
+
+
+--- &vcenter
+## Remeber, always...
+
+<span style="font-size:800%;">CROSS<br/></br/>VALIDATE!</span>
+<br />
+PCA is often misused and overused, so always verify it is helping by cross validating.
+
+--- .biplot
+## Lots of other ways to aid interpretation...
+
+```r
+iris.prcomp <- prcomp(iris[-5], center = TRUE, scale = FALSE)
+biplot(iris.prcomp)
+```
+
+![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14.png) 
 
 --- &vcenter
 ## Learn more...
 [<img src="assets/img/rbook.jpg"/>](http://factominer.free.fr/book/)
+
+--- &full_image local:danger_bilbo.jpg
+
+*** pnotes
+- Eigenvectors can freely rotate in the eigenspace.
+- With repeated eigenvalues you can't rely on the ordering.
+- Numerical differences in algorithms can effect the vectors.
+- The eigenspace is what is really important.
 
 ---
 ## Correlation
@@ -488,3 +577,13 @@ cor(iris[-5])
 ---
 "The calculation is done using eigen on the correlation or covariance matrix, as determined by cor. This is done for compatibility with the S-PLUS result. A preferred method of calculation is to use svd on x, as is done in prcomp."
 - Docs for princomp
+
+---
+
+```r
+qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Width, 
+    alpha = I(0.7))
+```
+
+![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
+

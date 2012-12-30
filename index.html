@@ -346,7 +346,7 @@ chart.Correlation(iris[-5], bg = iris$Species, pch = 21)
 \[
 \begin{eqnarray*}
 \sigma^2_A = \var(A) &=& E[(A - \mu_A)^2] \\
-                     &=& \frac{1}{N} \sum_{i=1}^N (a_i - \mu_A)^2
+                     &=& \frac{1}{n} \sum_{i=1}^n (a_i - \mu_A)^2
 \end{eqnarray*}
 \]
 </td>
@@ -358,7 +358,7 @@ chart.Correlation(iris[-5], bg = iris$Species, pch = 21)
 \[
 \begin{eqnarray*}
 \sigma_{AB} = \cov(A,B) &=& E[(A - \mu_A)(B - \mu_B)] \\
-                     &=& \frac{1}{N} \sum_{i=1}^N (a_i - \mu_A)(b_i - \mu_B)
+                     &=& \frac{1}{n} \sum_{i=1}^n (a_i - \mu_A)(b_i - \mu_B)
 \end{eqnarray*}
 \]
 </td>
@@ -405,8 +405,8 @@ Now $\sigma_{AB} = \frac 1n \sum_{i=1}^n a_i b_i$</div>
   </hgroup>
   <article>
     <pre><code class="r">center &lt;- function(x) x - mean(x)
-m.centered &lt;- apply(as.matrix(iris[-5]), 2, center)
-(t(m.centered) %*% m.centered)/(nrow(iris) - 1)
+iris.centered &lt;- apply(as.matrix(iris[-5]), 2, center)
+(t(iris.centered) %*% iris.centered)/(nrow(iris) - 1)
 </code></pre>
 
 <pre><code>##              Sepal.Length Sepal.Width Petal.Length Petal.Width
@@ -592,97 +592,36 @@ What this means is that \[P=Q^T\] where \(Q\) comes from the eigendecomposition 
 
       <slide class="" id="slide-26" style="background:;">
   <hgroup>
-    
+    <h2>Manual PCA in R</h2>
   </hgroup>
   <article>
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="" id="slide-27">
-<hgroup>
-  
-</hgroup>
-<article class = 'flexbox vcenter'>
-<pre><code class="r"># library(FactoMineR); iris.pca &lt;- PCA(iris, quali.sup=5)
-plot(iris.pca, habillage = 5, col.hab = c(&quot;green&quot;, &quot;blue&quot;, &quot;red&quot;), title = &quot;Dataset projected onto PC1-2 Subspace&quot;)
+    <pre><code class="r">iris.eigen = eigen(cov(iris.centered))
+rownames(iris.eigen$vectors) = colnames(iris.centered)
+colnames(iris.eigen$vectors) = c(&quot;PC1&quot;, &quot;PC2&quot;, &quot;PC3&quot;, &quot;PC4&quot;)
+iris.eigen
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
-
-</article>
-<!-- Presenter Notes -->
-</slide>
-      <slide class="" id="slide-28">
-<hgroup>
-  
-</hgroup>
-<article class = 'flexbox vcenter'>
-<pre><code class="r"># res.pca &lt;- PCA(decathlon, quanti.sup=11:12, quali.sup = 13)
-plot(res.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
-</code></pre>
-
-<p><img src="figure/unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5"> </p>
-
-</article>
-<!-- Presenter Notes -->
-</slide>
-      <slide class="scree_plot" id="slide-29" style="background:;">
-  <hgroup>
-    
-  </hgroup>
-  <article>
-    <pre><code class="r">iris.prcomp &lt;- prcomp(iris[-5], center = TRUE, scale = FALSE)
-screeplot(iris.prcomp, type = &quot;line&quot;, main = &quot;Scree Plot&quot;)
-</code></pre>
-
-<p><img src="figure/unnamed-chunk-6.png" alt="plot of chunk unnamed-chunk-6"> </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="biplot" id="slide-30" style="background:;">
-  <hgroup>
-    
-  </hgroup>
-  <article>
-    <pre><code class="r">iris.prcomp &lt;- prcomp(iris[-5], center = TRUE, scale = FALSE)
-biplot(iris.prcomp)
-</code></pre>
-
-<p><img src="figure/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="" id="slide-31" style="background:;">
-  <hgroup>
-    
-  </hgroup>
-  <article>
-    <pre><code class="r">prcomp(iris[-5])$rotation
-</code></pre>
-
-<pre><code>##                   PC1      PC2      PC3     PC4
-## Sepal.Length  0.36139 -0.65659  0.58203  0.3155
-## Sepal.Width  -0.08452 -0.73016 -0.59791 -0.3197
-## Petal.Length  0.85667  0.17337 -0.07624 -0.4798
-## Petal.Width   0.35829  0.07548 -0.54583  0.7537
+<pre><code>## $values
+## [1] 4.22824 0.24267 0.07821 0.02384
+## 
+## $vectors
+##                   PC1      PC2      PC3     PC4
+## Sepal.Length  0.36139 -0.65659 -0.58203  0.3155
+## Sepal.Width  -0.08452 -0.73016  0.59791 -0.3197
+## Petal.Length  0.85667  0.17337  0.07624 -0.4798
+## Petal.Width   0.35829  0.07548  0.54583  0.7537
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-32" style="background:;">
+      <slide class="" id="slide-27" style="background:;">
   <hgroup>
-    
+    <h2>Make the contributions intuitive...</h2>
   </hgroup>
   <article>
-    <pre><code class="r">prcomp(iris[-5])$rotation^2
+    <pre><code class="r">iris.eigen$vectors^2
 </code></pre>
 
 <pre><code>##                   PC1      PC2      PC3     PC4
@@ -696,7 +635,23 @@ biplot(iris.prcomp)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-33">
+      <slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <pre><code class="r">squared &lt;- iris.eigen$vectors^2
+sorted.squares &lt;- squared[order(squared[, 1]), 1]
+dotplot(sorted.squares, main = &quot;Variable Contributions to PC1&quot;, cex = 1.5, col = &quot;red&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-6.png" alt="plot of chunk unnamed-chunk-6"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-29">
 <hgroup>
   
 </hgroup>
@@ -705,12 +660,162 @@ biplot(iris.prcomp)
 plot(iris.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-10.png" alt="plot of chunk unnamed-chunk-10"> </p>
+<p><img src="figure/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
 
 </article>
 <!-- Presenter Notes -->
 </slide>
-      <slide class="" id="slide-34">
+      <slide class="" id="slide-30">
+<hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<pre><code class="r"># res.pca &lt;- PCA(decathlon, quanti.sup=11:12, quali.sup = 13)
+plot(res.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-8.png" alt="plot of chunk unnamed-chunk-8"> </p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+      <slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h2>What does the variance (eigenvaules) tell us?</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">iris.eigen$values  # The variance for each corresponding PC
+</code></pre>
+
+<pre><code>## [1] 4.22824 0.24267 0.07821 0.02384
+</code></pre>
+
+<div class="build">
+  <img src="assets/img/pca_transform.png"/>
+</div>
+
+
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note">
+    <section>
+      <ul>
+<li> We can easily reduce this down to two dimensions.</li>
+</ul>
+
+    </section>
+  </aside>
+</slide>
+
+      <slide class="" id="slide-32">
+<hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<pre><code class="r"># library(FactoMineR); iris.pca &lt;- PCA(iris, quali.sup=5)
+plot(iris.pca, habillage = 5, col.hab = c(&quot;green&quot;, &quot;blue&quot;, &quot;red&quot;), title = &quot;Dataset projected onto PC1-2 Subspace&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-10.png" alt="plot of chunk unnamed-chunk-10"> </p>
+
+
+</article>
+<!-- Presenter Notes -->
+<aside class="note">
+  <section>
+    <ul>
+<li>Talk about how a new observation would be projected in and then the distance could be measured for classification or other reasons.</li>
+</ul>
+
+  </section>
+</aside>
+</slide>
+      <slide class="" id="slide-33" style="background:;">
+  <hgroup>
+    <h2>How many components should you keep?</h2>
+  </hgroup>
+  <article>
+    <p>Ratio of variance retained (e.g. 99% is common):</p>
+
+<p><span style="font-weight:200%">
+\[\frac{\sum_{i=1}^k \sigma_i}{\sum_{i=1}^n \sigma_i}\]
+</span></p>
+
+<pre><code class="r">cumsum(iris.eigen$values/sum(iris.eigen$values))
+</code></pre>
+
+<pre><code>## [1] 0.9246 0.9777 0.9948 1.0000
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="scree_plot" id="slide-34" style="background:;">
+  <hgroup>
+    <h2>The Elbow Test</h2>
+  </hgroup>
+  <article>
+    <div class="build">
+<img style="float:right;height:450px;padding-top:100px;" src="assets/img/scree.jpg"/>
+</div>
+
+<pre><code class="r">iris.prcomp &lt;- prcomp(iris[-5], center = TRUE, scale = FALSE)
+screeplot(iris.prcomp, type = &quot;line&quot;, main = &quot;Scree Plot&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-12.png" alt="plot of chunk unnamed-chunk-12"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-35" style="background:;">
+  <hgroup>
+    <h2>Kaiser Criterion</h2>
+  </hgroup>
+  <article>
+    <p>Keep only the components whose eigenvalue is larger than the average eigenvalue.
+For a correlation PCA, this rule boils down to the standard advice to &quot;keep only the eigenvalues larger than 1&quot;.</p>
+
+<pre><code class="r">eigen(cor(iris.centered))$values
+</code></pre>
+
+<pre><code>## [1] 2.91850 0.91403 0.14676 0.02071
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-36">
+<hgroup>
+  <h2>Remeber, always...</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><span style="font-size:800%;">CROSS<br/></br/>VALIDATE!</span>
+<br />
+PCA is often misused and overused, so always verify it is helping by cross validating.</p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+      <slide class="biplot" id="slide-37" style="background:;">
+  <hgroup>
+    <h2>Lots of other ways to aid interpretation...</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">iris.prcomp &lt;- prcomp(iris[-5], center = TRUE, scale = FALSE)
+biplot(iris.prcomp)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-14.png" alt="plot of chunk unnamed-chunk-14"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-38">
 <hgroup>
   <h2>Learn more...</h2>
 </hgroup>
@@ -720,7 +825,26 @@ plot(iris.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
 </article>
 <!-- Presenter Notes -->
 </slide>
-      <slide class="" id="slide-35" style="background:;">
+      <slide class="fill nobackground" style="background-image: url(assets/img/danger_bilbo.jpg)">
+  <hgroup>
+    <h2 class=""></h2>
+  </hgroup>
+  
+  <footer class="source "></footer>
+  <!-- Presenter Notes -->
+  <aside class="note">
+    <section>
+      <ul>
+<li>Eigenvectors can freely rotate in the eigenspace.</li>
+<li>With repeated eigenvalues you can&#39;t rely on the ordering.</li>
+<li>Numerical differences in algorithms can effect the vectors.</li>
+<li>The eigenspace is what is really important.</li>
+</ul>
+
+    </section>
+  </aside>
+</slide>
+      <slide class="" id="slide-40" style="background:;">
   <hgroup>
     <h2>Correlation</h2>
   </hgroup>
@@ -741,7 +865,7 @@ plot(iris.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-36" style="background:;">
+      <slide class="" id="slide-41" style="background:;">
   <hgroup>
     <h2>References and Resources</h2>
   </hgroup>
@@ -761,7 +885,7 @@ plot(iris.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-37" style="background:;">
+      <slide class="" id="slide-42" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -771,6 +895,21 @@ plot(iris.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
 <ul>
 <li>Docs for princomp</li>
 </ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-43" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <pre><code class="r">qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Width, 
+    alpha = I(0.7))
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-16.png" alt="plot of chunk unnamed-chunk-16"> </p>
 
   </article>
   <!-- Presenter Notes -->
