@@ -8,5 +8,6 @@ guard 'livereload' do
 end
 
 guard 'shell' do
+  watch(%r{assets/.+\.(css|js|html)}) {|_| `./generate_deck.R` }
   watch("index.Rmd") {|_| `./generate_deck.R` }
 end
