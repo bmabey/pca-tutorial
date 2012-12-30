@@ -468,6 +468,40 @@ i.e. $Y$ is decorrelated.
   <!-- Presenter Notes -->
 </slide>
 
+      <slide class="" id="slide-20">
+<hgroup>
+  <h2>Our goal...</h2>
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><span style="font-size:250%">
+Find some orthonormal matrix \(P\) in \(PX = Y\) such that \(\Sigma_Y = YY^T\) is a diagonal matrix. The rows \(Y_n\)
+of \(P\) are the <strong>principal components</strong> of \(X\).
+</span></p>
+
+</article>
+<!-- Presenter Notes -->
+</slide>
+      <slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>Rewrite \(\Sigma_Y\) in terms of the unknown...</h2>
+  </hgroup>
+  <article>
+    <p><span style="font-size:150%">
+\[
+\begin{eqnarray*}
+\Sigma_Y &=& \frac 1n YY^T \\
+         &=& \frac 1n (PX)(PX)^T \\
+         &=& \frac 1n PXX^TP^T \\
+         &=& P (\frac 1n XX^T) P^T \\
+\Sigma_Y &=& P \Sigma_X P^T
+\end{eqnarray*}
+\]
+</span></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
       <slide class="fill nobackground" style="background-image: url(assets/img/strang.jpg)">
   <hgroup>
     <h2 class="white">Spectral Theorem / Principal Axis Theorem</h2>
@@ -484,7 +518,46 @@ i.e. $Y$ is decorrelated.
 
   <footer class="source white"></footer>
 </slide>
-      <slide class="" id="slide-21">
+      <slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>Remember, we are choosing what \(P\) is...</h2>
+  </hgroup>
+  <article>
+    <p><span style="font-size:175%">Let every row, \(p_i\), be an eigenvector of \(\Sigma_X\).
+What this means is that \[P=Q^T\] where \(Q\) comes from the eigendecomposition of \(\Sigma_X\).\[\Sigma_X = Q\Lambda Q^T\]</span></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Turn the Algebra crank...</h2>
+  </hgroup>
+  <article>
+    <p><span style="font-size:150%">
+\[
+\begin{eqnarray*}
+\Sigma_Y &=& P \Sigma_X P^T \\
+         &=& P(Q\Lambda Q^T) P^T \\
+         &=& P(P^T\Lambda P) P^T \\
+         &=& (PP^T)\Lambda (PP^T) \\
+         &=& I\Lambda I \\
+\Sigma_Y &=& \Lambda_{\Sigma_X} \\
+\end{eqnarray*}
+\]
+</span></p>
+
+<ul class="build">
+ <li>The principal components of $X$ are the eigenvectors of $\Sigma_X$.</li>
+ <li>The corresponding eigenvaules lie in $\Sigma_Y$ and represent the variance.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-25">
 <hgroup>
   <h2>Learn more...</h2>
 </hgroup>
@@ -494,7 +567,7 @@ i.e. $Y$ is decorrelated.
 </article>
 <!-- Presenter Notes -->
 </slide>
-      <slide class="" id="slide-22" style="background:;">
+      <slide class="" id="slide-26" style="background:;">
   <hgroup>
     <h2>Correlation</h2>
   </hgroup>
@@ -515,7 +588,7 @@ i.e. $Y$ is decorrelated.
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-23" style="background:;">
+      <slide class="" id="slide-27" style="background:;">
   <hgroup>
     <h2>References and Resources</h2>
   </hgroup>

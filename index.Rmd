@@ -253,6 +253,27 @@ i.e. $Y$ is decorrelated.
 </div>
 </div>
 
+--- &vcenter
+
+## Our goal...
+<span style="font-size:250%">
+Find some orthonormal matrix $P$ in $PX = Y$ such that $\Sigma_Y = YY^T$ is a diagonal matrix. The rows $Y_n$
+of $P$ are the **principal components** of $X$.
+</span>
+
+---
+## Rewrite $\Sigma_Y$ in terms of the unknown...
+<span style="font-size:150%">
+\[
+\begin{eqnarray*}
+\Sigma_Y &=& \frac 1n YY^T \\
+         &=& \frac 1n (PX)(PX)^T \\
+         &=& \frac 1n PXX^TP^T \\
+         &=& P (\frac 1n XX^T) P^T \\
+\Sigma_Y &=& P \Sigma_X P^T
+\end{eqnarray*}
+\]
+</span>
 
 --- &full_image local:strang.jpg text_class:white
 
@@ -266,6 +287,31 @@ i.e. $Y$ is decorrelated.
 \[A = Q\Lambda Q^{-1} = Q\Lambda Q^T \]</p>
 </blockquote>
 </div>
+
+--- $vcenter
+## Remember, we are choosing what $P$ is...
+
+<span style="font-size:175%">Let every row, $p_i$, be an eigenvector of $\Sigma_X$.
+What this means is that $$P=Q^T$$ where $Q$ comes from the eigendecomposition of $\Sigma_X$.$$\Sigma_X = Q\Lambda Q^T$$</span>
+
+---
+## Turn the Algebra crank...
+<span style="font-size:150%">
+\[
+\begin{eqnarray*}
+\Sigma_Y &=& P \Sigma_X P^T \\
+         &=& P(Q\Lambda Q^T) P^T \\
+         &=& P(P^T\Lambda P) P^T \\
+         &=& (PP^T)\Lambda (PP^T) \\
+         &=& I\Lambda I \\
+\Sigma_Y &=& \Lambda_{\Sigma_X} \\
+\end{eqnarray*}
+\]
+</span>
+<ul class="build">
+ <li>The principal components of $X$ are the eigenvectors of $\Sigma_X$.</li>
+ <li>The corresponding eigenvaules lie in $\Sigma_Y$ and represent the variance.</li>
+</ul>
 
 --- &vcenter
 ## Learn more...
