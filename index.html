@@ -844,14 +844,82 @@ biplot(iris.prcomp)
     </section>
   </aside>
 </slide>
-      <slide class="" id="slide-40" style="background:;">
+      <slide class="" id="slide-40">
+<hgroup>
+  
+</hgroup>
+<article class = 'flexbox vcenter'>
+<p><img style="height:600px;opacity:0.7;" src="assets/img/confused_gandalf.jpg"/></p>
+
+
+</article>
+<!-- Presenter Notes -->
+<aside class="note">
+  <section>
+    <ul>
+<li>While on the topic of LOTR... We haven&#39;t answered these questions yet. Now that you have understand the underlying intuition of PCA we can look at why using the correlation matrix would be required in some cases.</li>
+<li>We&#39;ll motivate this with an example...</li>
+</ul>
+
+  </section>
+</aside>
+</slide>
+      <slide class="" id="slide-41" style="background:;">
   <hgroup>
-    <h2>Correlation</h2>
+    <h2>How will PCA perform?</h2>
   </hgroup>
   <article>
-    <p>\(\rho = \corr(X,Y) = \frac{\sigma_{XY}}{\sigma_X \sigma_Y} = \frac{\cov(X,Y)}{\stddev(X)\stddev(Y)}\)</p>
+    <pre><code class="r">scaled.iris &lt;- iris
+scaled.iris$Petal.Length &lt;- iris$Petal.Length/1000
+scaled.iris$Petal.Width &lt;- iris$Petal.Width/1000
+scaled.iris$Sepal.Width &lt;- iris$Sepal.Width * 10
+</code></pre>
 
-<pre><code class="r">cor(iris[-5])
+<div style="visibility:hidden;">
+
+```
+## Warning: zero-length arrow is of indeterminate angle and so skipped
+```
+
+![plot of chunk scaled_iris](figure/scaled_iris1.png) ![plot of chunk scaled_iris](figure/scaled_iris2.png) 
+
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-42" style="background:;">
+  <hgroup>
+    <h2>Scale Matters</h2>
+  </hgroup>
+  <article>
+    
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="figure/scaled_iris1.png"/></p>
+
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="figure/scaled_iris2.png"/></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-43" style="background:;">
+  <hgroup>
+    <h2>Correlation Matrix - Standardize the data</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r"># (In practice just use the built-in cor function)
+standardize &lt;- function(x) {
+    centered &lt;- x - mean(x)
+    centered/sd(centered)
+}
+scaled.iris.standardized &lt;- apply(as.matrix(scaled.iris[-5]), 2, standardize)
+(t(scaled.iris.standardized) %*% scaled.iris.standardized)/(nrow(iris) - 1)
 </code></pre>
 
 <pre><code>##              Sepal.Length Sepal.Width Petal.Length Petal.Width
@@ -861,17 +929,85 @@ biplot(iris.prcomp)
 ## Petal.Width        0.8179     -0.3661       0.9629      1.0000
 </code></pre>
 
+
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note">
+    <section>
+      <ul>
+<li>Mention Kernel PCA.. you can apply non-linear transforms to the data before as well.</li>
+</ul>
+
+    </section>
+  </aside>
+</slide>
+
+      <slide class="" id="slide-44" style="background:;">
+  <hgroup>
+    <h2>Ok, so why SVD? And how is it equivalent?</h2>
+  </hgroup>
+  <article>
+    <p>Short answer on why:</p>
+
+<ul class="build">
+<li> SVD is more numerically stable</li>
+<li> More efficient <br/>
+ Especially when operating on a wide matrix.. you skip the step of calculating the covariance matrix
+ </li>
+<li>There are a lot of SVD algoritms and implementations to choose from</li>
+</ul>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-41" style="background:;">
+      <slide class="fill nobackground" style="background-image: url(assets/img/strang.jpg)">
+  <hgroup>
+    <h2 class="white">&quot;absolutely a high point of linear algebra&quot;</h2>
+  </hgroup>
+  <div style="float:left;width:300px">
+</div>
+
+<div style="width:500px; float:right;">
+<blockquote class="rectangle-speech-border">
+<p>Every matrix has the singular value decomposition (SVD) of:
+\[A = UDV^T \]
+</p>
+</blockquote>
+</div>
+
+  <footer class="source white"></footer>
+</slide>
+      <slide class="" id="slide-46" style="background:;">
+  <hgroup>
+    <h2>Hmm... doesn&#39;t that \(AA^T\) look familar?</h2>
+  </hgroup>
+  <article>
+    <p>\[
+\begin{eqnarray*}
+A &=& U DV^T \\
+AA^T &=& UDV^T(UDV^T)^T \\
+&=& UDV^TVD^T U^T \\
+&=& UDD^TU^T \ \ (V^TV = I\ \mbox{since $V$, and $U$, are orthonormal}) \\
+AA^T &=& U D^2 U^T \ \ (\mbox{since $D$ is a diagnol matrix}) \\
+\end{eqnarray*}
+\]
+Recall that eigendecomposition for an orthonormal matrix is \(A = Q \Lambda Q^T\).</p>
+
+<p>Therefore \(U\) are the eigenvectors of \(AA^T\) and \(D^2\) are the eigenvalues.
+\(V\) can be found the same way and \(D\) shall be the same in both cases.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-47" style="background:;">
   <hgroup>
     <h2>References and Resources</h2>
   </hgroup>
   <article>
     <ol>
-<li>Jon Shlens (version 2.0, and 3.0), <cite><a href="http://www.snl.salk.edu/%7Eshlens/">Tutorial on Principal Component Analysis</a></cite></li>
+<li>Jon Shlens (versions 2.0 and 3.1), <cite><a href="http://www.snl.salk.edu/%7Eshlens/">Tutorial on Principal Component Analysis</a></cite></li>
 <li>H Abdi and L J Williams (2010), <cite><a href="http://www.universityoftexasatdallascomets.com/%7Eherve/abdi-wireCS-PCA2010-inpress.pdf">Principal component analysis</a></cite></li>
 <li>Andrew Ng (2009), <cite><a href="http://see.stanford.edu/materials/aimlcs229/cs229-notes10.pdf">cs229 Lecture Notes 10</a></cite></li>
 <li>Andrew Ng (2009), <cite><a href="http://see.stanford.edu/see/lecturelist.aspx?coll=348ca38a-3a6d-4052-937d-cb017338d7b1">cs229 Lectures 14 &amp; 15</a></cite></li>
@@ -885,7 +1021,7 @@ biplot(iris.prcomp)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-42" style="background:;">
+      <slide class="" id="slide-48" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -900,7 +1036,7 @@ biplot(iris.prcomp)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-43" style="background:;">
+      <slide class="" id="slide-49" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -909,7 +1045,7 @@ biplot(iris.prcomp)
     alpha = I(0.7))
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-16.png" alt="plot of chunk unnamed-chunk-16"> </p>
+<p><img src="figure/unnamed-chunk-17.png" alt="plot of chunk unnamed-chunk-17"> </p>
 
   </article>
   <!-- Presenter Notes -->

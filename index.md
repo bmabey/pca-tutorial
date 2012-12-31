@@ -65,9 +65,7 @@ logo        : logos/03_Keyart.png
 
 
 --- &vcenter
-
 <img style="height:600px;opacity:0.7;" src="assets/img/confused_gandalf.jpg"/>
-
 
 ---
 
@@ -543,14 +541,59 @@ biplot(iris.prcomp)
 - Numerical differences in algorithms can effect the vectors.
 - The eigenspace is what is really important.
 
----
-## Correlation
-$\rho = \corr(X,Y) = \frac{\sigma_{XY}}{\sigma_X \sigma_Y} = \frac{\cov(X,Y)}{\stddev(X)\stddev(Y)}$
 
+--- &vcenter
+<img style="height:600px;opacity:0.7;" src="assets/img/confused_gandalf.jpg"/>
+
+*** pnotes
+- While on the topic of LOTR... We haven't answered these questions yet. Now that you have understand the underlying intuition of PCA we can look at why using the correlation matrix would be required in some cases.
+- We'll motivate this with an example...
+
+
+---
+## How will PCA perform?
+
+```r
+scaled.iris <- iris
+scaled.iris$Petal.Length <- iris$Petal.Length/1000
+scaled.iris$Petal.Width <- iris$Petal.Width/1000
+scaled.iris$Sepal.Width <- iris$Sepal.Width * 10
+```
+
+<div style="visibility:hidden;">
+
+```
+## Warning: zero-length arrow is of indeterminate angle and so skipped
+```
+
+![plot of chunk scaled_iris](figure/scaled_iris1.png) ![plot of chunk scaled_iris](figure/scaled_iris2.png) 
+
+</div>
+
+--- &twocol
+## Scale Matters
+
+*** left
+
+<img src="figure/scaled_iris1.png"/>
+
+*** right
+
+<img src="figure/scaled_iris2.png"/>
+
+---
+
+## Correlation Matrix - Standardize the data
 
 
 ```r
-cor(iris[-5])
+# (In practice just use the built-in cor function)
+standardize <- function(x) {
+    centered <- x - mean(x)
+    centered/sd(centered)
+}
+scaled.iris.standardized <- apply(as.matrix(scaled.iris[-5]), 2, standardize)
+(t(scaled.iris.standardized) %*% scaled.iris.standardized)/(nrow(iris) - 1)
 ```
 
 ```
@@ -562,9 +605,55 @@ cor(iris[-5])
 ```
 
 
+
+*** pnotes
+ - Mention Kernel PCA.. you can apply non-linear transforms to the data before as well.
+
+---
+## Ok, so why SVD? And how is it equivalent?
+
+Short answer on why:
+<ul class="build">
+<li> SVD is more numerically stable</li>
+<li> More efficient <br/>
+ Especially when operating on a wide matrix.. you skip the step of calculating the covariance matrix
+ </li>
+<li>There are a lot of SVD algoritms and implementations to choose from</li>
+</ul>
+
+--- &full_image local:strang.jpg text_class:white
+## "absolutely a high point of linear algebra"
+
+<div style="float:left;width:300px">
+</div>
+<div style="width:500px; float:right;">
+<blockquote class="rectangle-speech-border">
+<p>Every matrix has the singular value decomposition (SVD) of:
+\[A = UDV^T \]
+</p>
+</blockquote>
+</div>
+
+---
+## Hmm... doesn't that $AA^T$ look familar?
+\[
+\begin{eqnarray*}
+A &=& U DV^T \\
+AA^T &=& UDV^T(UDV^T)^T \\
+&=& UDV^TVD^T U^T \\
+&=& UDD^TU^T \ \ (V^TV = I\ \mbox{since $V$, and $U$, are orthonormal}) \\
+AA^T &=& U D^2 U^T \ \ (\mbox{since $D$ is a diagnol matrix}) \\
+\end{eqnarray*}
+\]
+Recall that eigendecomposition for an orthonormal matrix is $A = Q \Lambda Q^T$.
+
+Therefore $U$ are the eigenvectors of $AA^T$ and $D^2$ are the eigenvalues.
+$V$ can be found the same way and $D$ shall be the same in both cases.
+
+
 ---
 ## References and Resources
-1. Jon Shlens (version 2.0, and 3.0), <cite>[Tutorial on Principal Component Analysis](http://www.snl.salk.edu/~shlens/)</cite>
+1. Jon Shlens (versions 2.0 and 3.1), <cite>[Tutorial on Principal Component Analysis](http://www.snl.salk.edu/~shlens/)</cite>
 1. H Abdi and L J Williams (2010), <cite>[Principal component analysis](http://www.universityoftexasatdallascomets.com/~herve/abdi-wireCS-PCA2010-inpress.pdf)</cite>
 1. Andrew Ng (2009), <cite>[cs229 Lecture Notes 10](http://see.stanford.edu/materials/aimlcs229/cs229-notes10.pdf)</cite>
 1. Andrew Ng (2009), <cite>[cs229 Lectures 14 & 15](http://see.stanford.edu/see/lecturelist.aspx?coll=348ca38a-3a6d-4052-937d-cb017338d7b1)</cite>
@@ -585,5 +674,5 @@ qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Wid
     alpha = I(0.7))
 ```
 
-![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
+![plot of chunk unnamed-chunk-17](figure/unnamed-chunk-17.png) 
 
