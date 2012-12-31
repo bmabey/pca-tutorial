@@ -976,11 +976,23 @@ scaled.iris.standardized &lt;- apply(as.matrix(scaled.iris[-5]), 2, standardize)
 </blockquote>
 </div>
 
+
   <footer class="source white"></footer>
+  <!-- Presenter Notes -->
+  <aside class="note">
+    <section>
+      <ul>
+<li>It really is a high point...</li>
+<li>If you don&#39;t already know SVD the details are out of scope for this presentation.. go watch Gilbert Strang&#39;s courses!</li>
+<li>I just will bring out one property that will aid in connecting it to PCA.</li>
+</ul>
+
+    </section>
+  </aside>
 </slide>
       <slide class="" id="slide-46" style="background:;">
   <hgroup>
-    <h2>Hmm... doesn&#39;t that \(AA^T\) look familar?</h2>
+    <h2>Hey, \(AA^T\) and \(A^TA\) look familar...</h2>
   </hgroup>
   <article>
     <p>\[
@@ -994,14 +1006,74 @@ AA^T &=& U D^2 U^T \ \ (\mbox{since $D$ is a diagnol matrix}) \\
 \]
 Recall that eigendecomposition for an orthonormal matrix is \(A = Q \Lambda Q^T\).</p>
 
-<p>Therefore \(U\) are the eigenvectors of \(AA^T\) and \(D^2\) are the eigenvalues.
-\(V\) can be found the same way and \(D\) shall be the same in both cases.</p>
+<p>Therefore \(U\) are the eigenvectors of \(AA^T\) and \(D^2\) are the eigenvalues.</p>
+
+<p>Likewise \(V\) are the eigenvectors of \(A^TA\) and \(D^2\) are the eigenvalues.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
       <slide class="" id="slide-47" style="background:;">
+  <hgroup>
+    <h2>Turn the crank once more...</h2>
+  </hgroup>
+  <article>
+    <p>Let a new matrix \(Y = \frac{1}{\sqrt{n}}X^T\) where each column of \(Y\) is mean centered.</p>
+
+<p>\[
+\begin{eqnarray*}
+Y^TY &=& (\frac{1}{\sqrt{n}}X^T)^T(\frac{1}{\sqrt{n}}X^T) \\
+     &=& \frac 1n XX^T \\
+Y^TY &=& \Sigma_X
+\end{eqnarray*}
+\]</p>
+
+<p>So, if we run SVD on our \(Y\) then \(V\) will contain the eigenvectors of \(\Sigma_X\)... \(X\)&#39;s principal components!
+Our eigenvalues, the variances, will be \(D^2\).</p>
+
+
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note">
+    <section>
+      <p>You should really read Jon Shlens&#39; Tutorial since this is where I stole this from.</p>
+
+    </section>
+  </aside>
+</slide>
+
+      <slide class="" id="slide-48" style="background:;">
+  <hgroup>
+    <h2>Tada!</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">y &lt;- iris.centered/sqrt(nrow(iris) - 1)
+y.svd &lt;- svd(y)
+pcs &lt;- y.svd$v
+rownames(pcs) = colnames(iris.centered)
+colnames(pcs) = c(&quot;PC1&quot;, &quot;PC2&quot;, &quot;PC3&quot;, &quot;PC4&quot;)
+pcs
+</code></pre>
+
+<pre><code>##                   PC1      PC2      PC3     PC4
+## Sepal.Length  0.36139 -0.65659  0.58203  0.3155
+## Sepal.Width  -0.08452 -0.73016 -0.59791 -0.3197
+## Petal.Length  0.85667  0.17337 -0.07624 -0.4798
+## Petal.Width   0.35829  0.07548 -0.54583  0.7537
+</code></pre>
+
+<pre><code class="r">y.svd$d^2  # variances
+</code></pre>
+
+<pre><code>## [1] 4.22824 0.24267 0.07821 0.02384
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-49" style="background:;">
   <hgroup>
     <h2>References and Resources</h2>
   </hgroup>
@@ -1021,7 +1093,7 @@ Recall that eigendecomposition for an orthonormal matrix is \(A = Q \Lambda Q^T\
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-48" style="background:;">
+      <slide class="" id="slide-50" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -1036,7 +1108,7 @@ Recall that eigendecomposition for an orthonormal matrix is \(A = Q \Lambda Q^T\
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-49" style="background:;">
+      <slide class="" id="slide-51" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -1045,7 +1117,7 @@ Recall that eigendecomposition for an orthonormal matrix is \(A = Q \Lambda Q^T\
     alpha = I(0.7))
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-17.png" alt="plot of chunk unnamed-chunk-17"> </p>
+<p><img src="figure/unnamed-chunk-18.png" alt="plot of chunk unnamed-chunk-18"> </p>
 
   </article>
   <!-- Presenter Notes -->

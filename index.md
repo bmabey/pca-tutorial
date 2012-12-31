@@ -634,8 +634,13 @@ Short answer on why:
 </blockquote>
 </div>
 
+*** pnotes
+- It really is a high point...
+- If you don't already know SVD the details are out of scope for this presentation.. go watch Gilbert Strang's courses!
+- I just will bring out one property that will aid in connecting it to PCA.
+
 ---
-## Hmm... doesn't that $AA^T$ look familar?
+## Hey, $AA^T$ and $A^TA$ look familar...
 \[
 \begin{eqnarray*}
 A &=& U DV^T \\
@@ -648,7 +653,56 @@ AA^T &=& U D^2 U^T \ \ (\mbox{since $D$ is a diagnol matrix}) \\
 Recall that eigendecomposition for an orthonormal matrix is $A = Q \Lambda Q^T$.
 
 Therefore $U$ are the eigenvectors of $AA^T$ and $D^2$ are the eigenvalues.
-$V$ can be found the same way and $D$ shall be the same in both cases.
+
+Likewise $V$ are the eigenvectors of $A^TA$ and $D^2$ are the eigenvalues.
+
+---
+## Turn the crank once more...
+Let a new matrix $Y = \frac{1}{\sqrt{n}}X^T$ where each column of $Y$ is mean centered.
+
+\[
+\begin{eqnarray*}
+Y^TY &=& (\frac{1}{\sqrt{n}}X^T)^T(\frac{1}{\sqrt{n}}X^T) \\
+     &=& \frac 1n XX^T \\
+Y^TY &=& \Sigma_X
+\end{eqnarray*}
+\]
+
+So, if we run SVD on our $Y$ then $V$ will contain the eigenvectors of $\Sigma_X$... $X$'s principal components!
+Our eigenvalues, the variances, will be $D^2$.
+
+*** pnotes
+
+You should really read Jon Shlens' Tutorial since this is where I stole this from.
+
+---
+## Tada!
+
+```r
+y <- iris.centered/sqrt(nrow(iris) - 1)
+y.svd <- svd(y)
+pcs <- y.svd$v
+rownames(pcs) = colnames(iris.centered)
+colnames(pcs) = c("PC1", "PC2", "PC3", "PC4")
+pcs
+```
+
+```
+##                   PC1      PC2      PC3     PC4
+## Sepal.Length  0.36139 -0.65659  0.58203  0.3155
+## Sepal.Width  -0.08452 -0.73016 -0.59791 -0.3197
+## Petal.Length  0.85667  0.17337 -0.07624 -0.4798
+## Petal.Width   0.35829  0.07548 -0.54583  0.7537
+```
+
+```r
+y.svd$d^2  # variances
+```
+
+```
+## [1] 4.22824 0.24267 0.07821 0.02384
+```
+
 
 
 ---
@@ -674,5 +728,5 @@ qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Wid
     alpha = I(0.7))
 ```
 
-![plot of chunk unnamed-chunk-17](figure/unnamed-chunk-17.png) 
+![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-18.png) 
 
