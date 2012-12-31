@@ -517,7 +517,7 @@ eigen(cor(iris.centered))$values
 
 <span style="font-size:800%;">CROSS<br/></br/>VALIDATE!</span>
 <br />
-PCA is often misused and overused, so always verify it is helping by cross validating.
+PCA is overused and commonly misused, so always verify it is helping by cross validating.
 
 --- .biplot
 ## Lots of other ways to aid interpretation...
@@ -704,7 +704,7 @@ y.svd$d^2  # variances
 ```
 
 
----
+--- &full_image local:Gandalf_the_White_returns.png
 ## References and Resources
 1. Jon Shlens (versions 2.0 and 3.1), <cite>[Tutorial on Principal Component Analysis](http://www.snl.salk.edu/~shlens/)</cite>
 1. H Abdi and L J Williams (2010), <cite>[Principal component analysis](http://www.universityoftexasatdallascomets.com/~herve/abdi-wireCS-PCA2010-inpress.pdf)</cite>
