@@ -579,7 +579,6 @@ pcs
 y.svd$d^2 # variances
 ```
 
-
 ---
 ## References and Resources
 1. Jon Shlens (versions 2.0 and 3.1), <cite>[Tutorial on Principal Component Analysis](http://www.snl.salk.edu/~shlens/)</cite>
@@ -590,14 +589,3 @@ y.svd$d^2 # variances
 1. Steve Pittard (2012), <cite>[Principal Components Analysis Using R](http://www.youtube.com/user/biorsph)</cite>
 1. Quick-R, <cite>[Principal Components and Factor Analysis](http://www.statmethods.net/advstats/factor.html)</cite> (good pointers to additional R packages)
 1. C Ding, X He (2004), <cite>[K-means Clustering via Principal Component Analysis](http://ranger.uta.edu/~chqding/papers/KmeansPCA1.pdf)</cite>
-
-
----
-"The calculation is done using eigen on the correlation or covariance matrix, as determined by cor. This is done for compatibility with the S-PLUS result. A preferred method of calculation is to use svd on x, as is done in prcomp."
-- Docs for princomp
-
----
-```{r echo=-1, message=FALSE}
-library(ggplot2)
-qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Width, alpha = I(0.7))
-```
