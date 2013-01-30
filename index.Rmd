@@ -65,7 +65,7 @@ logo        : logos/03_Keyart.png
 
 
 --- &vcenter
-<img style="height:600px;opacity:0.7;" src="assets/img/confused_gandalf.jpg"/>
+<img style="height:600px;" src="assets/img/confused_gandalf.jpg"/>
 
 ---
 
@@ -78,6 +78,8 @@ logo        : logos/03_Keyart.png
 <span style="font-size:500%">$P_{m\times m}X_{m\times n} = Y_{m\times n}$</span>
 
 *** pnotes
+- N.B.: The X here is the tranpose of a typical design matrix..
+  - See the Shlens paper for more info.
 - Its goal is to extract the important information from the data and to express this information as a set of new orthogonal variables called principal components.
 - A *linear* transformation!  This is a big assumption.
 - *Is there another basis, which is a linear combination of the original basis, that best re-expresses our data set?*
@@ -448,7 +450,7 @@ biplot(iris.prcomp)
 
 
 --- &vcenter
-<img style="height:600px;opacity:0.7;" src="assets/img/confused_gandalf.jpg"/>
+<img style="height:600px;" src="assets/img/confused_gandalf.jpg"/>
 
 *** pnotes
 - While on the topic of LOTR... We haven't answered these questions yet. Now that you have understand the underlying intuition of PCA we can look at why using the correlation matrix would be required in some cases.
