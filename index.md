@@ -2,16 +2,30 @@
 title       : PCA for the uninitiated
 subtitle    : Intuitive motivation via maximum variance interpretation
 author      : Ben Mabey
-github      :
-    - user: bmabey
-    - repo: pca-tutorial
+user        : bmabey
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      #
 widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
-biglogo     : logos/01_Full-Seal.png
 logo        : logos/03_Keyart.png
+github:
+  user: bmabey
+  repo: pca-tutorial
+
+---
+
+## For offline viewers...
+
+* Pressing 'p' toggles speaker notes (when available)
+* Pressing 'f' toggles fullscreen viewing
+* Pressing 'w' toggles widescreen
+* Pressing 'o' toggles overview mode
+
+N.B.: I skip steps and don't explain eveything on the slides (or even on the presenter notes).
+For a more thorough explaination of the math I highly reccomend the tutorial by Jonathan Shlens. The link for that and
+more are at the end of this presentation.
+
 
 --- &twocol
 
@@ -708,7 +722,7 @@ y.svd$d^2  # variances
 ```
 
 
---- &full_image local:Gandalf_the_White_returns.png
+--- &full_image local:Gandalf_the_White_returns.png #references
 ## References and Resources
 1. Jon Shlens (versions 2.0 and 3.1), <cite>[Tutorial on Principal Component Analysis](http://www.snl.salk.edu/~shlens/)</cite>
 1. H Abdi and L J Williams (2010), <cite>[Principal component analysis](http://www.universityoftexasatdallascomets.com/~herve/abdi-wireCS-PCA2010-inpress.pdf)</cite>

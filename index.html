@@ -41,16 +41,33 @@
           <br/><a href="http://twitter.com/bmabey">@bmabey</a>
         </p>
       </hgroup>
-      <a href="https://github.com/bmabey//zipball/gh-pages" class="example">
-        Download
-      </a>
-      <a href="https://github.com//pca-tutorial/zipball/gh-pages" class="example">
+      <a href="https://github.com/bmabey/pca-tutorial/zipball/gh-pages" class="example">
         Download
       </a>
           </slide>
 
     <!-- SLIDES -->
       <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>For offline viewers...</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Pressing &#39;p&#39; toggles speaker notes (when available)</li>
+<li>Pressing &#39;f&#39; toggles fullscreen viewing</li>
+<li>Pressing &#39;w&#39; toggles widescreen</li>
+<li>Pressing &#39;o&#39; toggles overview mode</li>
+</ul>
+
+<p>N.B.: I skip steps and don&#39;t explain eveything on the slides (or even on the presenter notes).
+For a more thorough explaination of the math I highly reccomend the tutorial by Jonathan Shlens. The link for that and
+more are at the end of this presentation.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-2" style="background:;">
   <hgroup>
     <h2>The ubiquitous &amp; versatile PCA</h2>
   </hgroup>
@@ -91,7 +108,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-2" style="background:;">
+      <slide class="" id="slide-3" style="background:;">
   <hgroup>
     <h2>Majority of PCA tutorials...</h2>
   </hgroup>
@@ -107,7 +124,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-3" style="background:;">
+      <slide class="" id="slide-4" style="background:;">
   <hgroup>
     <h2>Majority of PCA tutorials...</h2>
   </hgroup>
@@ -123,7 +140,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-4" style="background:;">
+      <slide class="" id="slide-5" style="background:;">
   <hgroup>
     <h2>Majority of PCA tutorials...</h2>
   </hgroup>
@@ -140,7 +157,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-5">
+      <slide class="" id="slide-6">
 <hgroup>
   
 </hgroup>
@@ -150,7 +167,7 @@
 </article>
 <!-- Presenter Notes -->
 </slide>
-      <slide class="" id="slide-6" style="background:;">
+      <slide class="" id="slide-7" style="background:;">
   <hgroup>
     <h2>The intuitive <del>Magic</del> Math behind PCA</h2>
   </hgroup>
@@ -164,7 +181,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-7">
+      <slide class="" id="slide-8">
 <hgroup>
   
 </hgroup>
@@ -214,7 +231,7 @@
     </section>
   </aside>
 </slide>
-      <slide class="" id="slide-9">
+      <slide class="" id="slide-10">
 <hgroup>
   
 </hgroup>
@@ -231,7 +248,7 @@
   
   <footer class="source "></footer>
 </slide>
-      <slide class="" id="slide-11" style="background:;">
+      <slide class="" id="slide-12" style="background:;">
   <hgroup>
     <h2>Rotate to maximize variance</h2>
   </hgroup>
@@ -250,7 +267,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-12">
+      <slide class="" id="slide-13">
 <hgroup>
   
 </hgroup>
@@ -281,7 +298,7 @@
   </section>
 </aside>
 </slide>
-      <slide class="" id="slide-13" style="background:;">
+      <slide class="" id="slide-14" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -296,7 +313,7 @@ chart.Correlation(iris[-5], bg = iris$Species, pch = 21)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-14" style="background:;">
+      <slide class="" id="slide-15" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -323,7 +340,7 @@ chart.Correlation(iris[-5], bg = iris$Species, pch = 21)
   </aside>
 </slide>
 
-      <slide class="" id="slide-15">
+      <slide class="" id="slide-16">
 <hgroup>
   <h2>Variance and Covariance</h2>
 </hgroup>
@@ -376,7 +393,7 @@ unitless measure $(-1.0..1.0)$
 </article>
 <!-- Presenter Notes -->
 </slide>
-      <slide class="" id="slide-16" style="background:;">
+      <slide class="" id="slide-17" style="background:;">
   <hgroup>
     <h2>Covariance Matrix</h2>
   </hgroup>
@@ -401,7 +418,7 @@ Now $\sigma_{AB} = \frac 1n \sum_{i=1}^n a_i b_i$</div>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-17" style="background:;">
+      <slide class="" id="slide-18" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -422,7 +439,7 @@ iris.centered &lt;- apply(as.matrix(iris[-5]), 2, center)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-18" style="background:;">
+      <slide class="" id="slide-19" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -453,7 +470,7 @@ m.centered &lt;- apply(as.matrix(iris[-5]), 2, center)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-19" style="background:;">
+      <slide class="" id="slide-20" style="background:;">
   <hgroup>
     <h2>What would our ideal \(\Sigma_Y\) look like?</h2>
   </hgroup>
@@ -482,7 +499,7 @@ i.e. $Y$ is decorrelated.
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-20">
+      <slide class="" id="slide-21">
 <hgroup>
   <h2>Our goal...</h2>
 </hgroup>
@@ -502,7 +519,7 @@ This will make our life easier...
 </article>
 <!-- Presenter Notes -->
 </slide>
-      <slide class="" id="slide-21" style="background:;">
+      <slide class="" id="slide-22" style="background:;">
   <hgroup>
     <h2>Rewrite \(\Sigma_Y\) in terms of the unknown...</h2>
   </hgroup>
@@ -539,7 +556,7 @@ This will make our life easier...
 
   <footer class="source white"></footer>
 </slide>
-      <slide class="" id="slide-23" style="background:;">
+      <slide class="" id="slide-24" style="background:;">
   <hgroup>
     <h2>Remember, we are choosing what \(P\) is...</h2>
   </hgroup>
@@ -552,7 +569,7 @@ This will make our life easier...
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-24" style="background:;">
+      <slide class="" id="slide-25" style="background:;">
   <hgroup>
     <h2>Remember, we are choosing what \(P\) is...</h2>
   </hgroup>
@@ -564,7 +581,7 @@ What this means is that \[P=Q^T\] where \(Q\) comes from the eigendecomposition 
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-25" style="background:;">
+      <slide class="" id="slide-26" style="background:;">
   <hgroup>
     <h2>Turn the Algebra crank...</h2>
   </hgroup>
@@ -592,7 +609,7 @@ What this means is that \[P=Q^T\] where \(Q\) comes from the eigendecomposition 
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-26" style="background:;">
+      <slide class="" id="slide-27" style="background:;">
   <hgroup>
     <h2>Manual PCA in R</h2>
   </hgroup>
@@ -618,7 +635,7 @@ iris.eigen
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-27" style="background:;">
+      <slide class="" id="slide-28" style="background:;">
   <hgroup>
     <h2>Make the contributions intuitive...</h2>
   </hgroup>
@@ -637,7 +654,7 @@ iris.eigen
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-28" style="background:;">
+      <slide class="" id="slide-29" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -653,7 +670,7 @@ dotplot(sorted.squares, main = &quot;Variable Contributions to PC1&quot;, cex = 
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-29">
+      <slide class="" id="slide-30">
 <hgroup>
   
 </hgroup>
@@ -667,7 +684,7 @@ plot(iris.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
 </article>
 <!-- Presenter Notes -->
 </slide>
-      <slide class="" id="slide-30">
+      <slide class="" id="slide-31">
 <hgroup>
   
 </hgroup>
@@ -681,7 +698,7 @@ plot(res.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
 </article>
 <!-- Presenter Notes -->
 </slide>
-      <slide class="" id="slide-31" style="background:;">
+      <slide class="" id="slide-32" style="background:;">
   <hgroup>
     <h2>What does the variance (eigenvaules) tell us?</h2>
   </hgroup>
@@ -709,7 +726,7 @@ plot(res.pca, choix = &quot;var&quot;, title = &quot;Correlation Circle&quot;)
   </aside>
 </slide>
 
-      <slide class="" id="slide-32">
+      <slide class="" id="slide-33">
 <hgroup>
   
 </hgroup>
@@ -732,7 +749,7 @@ plot(iris.pca, habillage = 5, col.hab = c(&quot;green&quot;, &quot;blue&quot;, &
   </section>
 </aside>
 </slide>
-      <slide class="" id="slide-33" style="background:;">
+      <slide class="" id="slide-34" style="background:;">
   <hgroup>
     <h2>How many components should you keep?</h2>
   </hgroup>
@@ -753,7 +770,7 @@ plot(iris.pca, habillage = 5, col.hab = c(&quot;green&quot;, &quot;blue&quot;, &
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="scree_plot" id="slide-34" style="background:;">
+      <slide class="scree_plot" id="slide-35" style="background:;">
   <hgroup>
     <h2>The Elbow Test</h2>
   </hgroup>
@@ -772,7 +789,7 @@ screeplot(iris.prcomp, type = &quot;line&quot;, main = &quot;Scree Plot&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-35" style="background:;">
+      <slide class="" id="slide-36" style="background:;">
   <hgroup>
     <h2>Kaiser Criterion</h2>
   </hgroup>
@@ -790,7 +807,7 @@ For a correlation PCA, this rule boils down to the standard advice to &quot;keep
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-36">
+      <slide class="" id="slide-37">
 <hgroup>
   <h2>Remeber, always...</h2>
 </hgroup>
@@ -802,7 +819,7 @@ PCA is overused and commonly misused, so always verify it is helping by cross va
 </article>
 <!-- Presenter Notes -->
 </slide>
-      <slide class="biplot" id="slide-37" style="background:;">
+      <slide class="biplot" id="slide-38" style="background:;">
   <hgroup>
     <h2>Lots of other ways to aid interpretation...</h2>
   </hgroup>
@@ -817,7 +834,7 @@ biplot(iris.prcomp)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-38">
+      <slide class="" id="slide-39">
 <hgroup>
   <h2>Learn more...</h2>
 </hgroup>
@@ -846,7 +863,7 @@ biplot(iris.prcomp)
     </section>
   </aside>
 </slide>
-      <slide class="" id="slide-40">
+      <slide class="" id="slide-41">
 <hgroup>
   
 </hgroup>
@@ -866,7 +883,7 @@ biplot(iris.prcomp)
   </section>
 </aside>
 </slide>
-      <slide class="" id="slide-41" style="background:;">
+      <slide class="" id="slide-42" style="background:;">
   <hgroup>
     <h2>How will PCA perform?</h2>
   </hgroup>
@@ -891,7 +908,7 @@ scaled.iris$Sepal.Width &lt;- iris$Sepal.Width * 10
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-42" style="background:;">
+      <slide class="" id="slide-43" style="background:;">
   <hgroup>
     <h2>Scale Matters</h2>
   </hgroup>
@@ -910,7 +927,7 @@ scaled.iris$Sepal.Width &lt;- iris$Sepal.Width * 10
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-43" style="background:;">
+      <slide class="" id="slide-44" style="background:;">
   <hgroup>
     <h2>Correlation Matrix - Standardize the data</h2>
   </hgroup>
@@ -944,7 +961,7 @@ scaled.iris.standardized &lt;- apply(as.matrix(scaled.iris[-5]), 2, standardize)
   </aside>
 </slide>
 
-      <slide class="" id="slide-44" style="background:;">
+      <slide class="" id="slide-45" style="background:;">
   <hgroup>
     <h2>Ok, so why SVD? And how is it equivalent?</h2>
   </hgroup>
@@ -992,7 +1009,7 @@ scaled.iris.standardized &lt;- apply(as.matrix(scaled.iris[-5]), 2, standardize)
     </section>
   </aside>
 </slide>
-      <slide class="" id="slide-46" style="background:;">
+      <slide class="" id="slide-47" style="background:;">
   <hgroup>
     <h2>Hey, \(AA^T\) and \(A^TA\) look familar...</h2>
   </hgroup>
@@ -1016,7 +1033,7 @@ Recall that eigendecomposition for an orthonormal matrix is \(A = Q \Lambda Q^T\
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-47" style="background:;">
+      <slide class="" id="slide-48" style="background:;">
   <hgroup>
     <h2>Turn the crank once more...</h2>
   </hgroup>
@@ -1045,7 +1062,7 @@ Our eigenvalues, the variances, will be \(D^2\).</p>
   </aside>
 </slide>
 
-      <slide class="" id="slide-48" style="background:;">
+      <slide class="" id="slide-49" style="background:;">
   <hgroup>
     <h2>Tada!</h2>
   </hgroup>
