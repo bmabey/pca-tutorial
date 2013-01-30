@@ -15,14 +15,15 @@ github:
 
 ---
 
-## For offline viewers...
+## For online viewers...
 
 * Pressing 'p' toggles speaker notes (when available)
 * Pressing 'f' toggles fullscreen viewing
 * Pressing 'w' toggles widescreen
 * Pressing 'o' toggles overview mode
 
-N.B.: I skip steps and don't explain eveything on the slides (or even on the presenter notes).
+N.B.: I skip steps, don't explain eveything on the slides (or even on the presenter notes), and was inconsistent with
+some of my formulas that I explained during the actual presentation.
 For a more thorough explaination of the math I highly reccomend the tutorial by Jonathan Shlens. The link for that and
 more are at the end of this presentation.
 
