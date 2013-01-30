@@ -18,7 +18,11 @@
       <hgroup class="auto-fadein">
         <h1>{{ title }}</h1>
         <h2>{{ subtitle }}</h2>
-        <p>{{ author }}<br/>{{ job }}</p>
+        <p>{{ author }}
+          <br/><a href="http://benmabey.com">benmabey.com</a>
+          <br/><a href="http://github.com/bmabey">github.com/bmabey</a>
+          <br/><a href="http://twitter.com/bmabey">@bmabey</a>
+        </p>
       </hgroup>
       {{# github }}
       <a href="https://github.com/{{user}}/{{repo}}/zipball/gh-pages" class="example">
@@ -54,4 +58,10 @@
 <script>window.jQuery || document.write('<script src="{{url.lib}}/widgets/quiz/js/jquery-1.7.min.js"><\/script>')</script>
 <!-- Load Javascripts for Widgets -->
 {{> javascripts }}
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1747830-2";
+urchinTracker();
+</script>
 </html>
