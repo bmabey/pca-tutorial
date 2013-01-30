@@ -22,11 +22,10 @@ github:
 * Pressing 'w' toggles widescreen
 * Pressing 'o' toggles overview mode
 
-N.B.: I skip steps, don't explain eveything on the slides (or even on the presenter notes), and was inconsistent with
-some of my formulas that I explained during the actual presentation.
-For a more thorough explaination of the math I highly reccomend the tutorial by Jonathan Shlens. The link for that and
-more are at the end of this presentation.
+N.B.:
+The deck isn't completely standalone since I don't explain every step made as I did when actually presenting it.  That said I think the deck should be useful for anyone who wants to get a quick idea of what PCA is and the math behind it (I only take into account conventional PCA, not probabilistic interpretations).  I am inconsistent with some of my equations to make some of the algebra easier (all legal though!) which I explained during the actual presentation.  For people who want to go deeper and follow the math more closely I highly recommend the [tutorial by Jonathan Shlens](http://www.snl.salk.edu/~shlens/) which is where I got most of my derivations.
 
+See the last slide of the deck for additional resources.
 
 --- &twocol
 
