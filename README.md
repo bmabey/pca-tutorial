@@ -1,6 +1,6 @@
 # PCA for the uninitiated: Intuitive motivation via maximum variance interpretation
 
-I gave this at [work](http://rebdrainlabs.com) to introduce people to PCA.  Basic linear algebra knowledge was assumed and code examples were given in R.  The presentation is available to view [here](http://benmabey.com/presenations/pca-tutorial).
+I gave this at [work](http://rebdrainlabs.com) to introduce people to PCA.  Basic linear algebra knowledge was assumed and code examples were given in R.  The presentation is available to view [here](http://benmabey.com/presentations/pca-tutorial).
 
 The deck isn't completely standalone since I don't explain every step made as I did when actually presenting it.  That said I think the deck should be useful for anyone who wants to get a quick idea of what PCA is and the math behind it (I only take into account conventional PCA, not probabilistic interpretations).  I am inconsistent with some of my equations to make some of the algebra easier (all legal though!) which I explained during the actual presentation.  For people who want to go deeper and follow the math more closely I highly recommend the [tutorial by Jonathan Shlens](http://www.snl.salk.edu/~shlens/) which is where I got most of my derivations.
 
